@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bd6rb8h45ghaw"]
+
+[ext_resource type="PackedScene" uid="uid://b66derbsbgm0j" path="res://Escenas/GuardiaPlayer.tscn" id="1_xfvvv"]
+
+[node name="Office" type="Node3D" unique_id=1100347235]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1101863725]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15828443, 0.15001827, 0.14281559)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=600028851]
+transform = Transform3D(0.99999994, -0.00034679877, -0.0002282714, 0.0003464088, 0.9999984, -0.0017064195, 0.00022886269, 0.0017063357, 0.99999845, -1.138622, 0.1477677, 0.13569218)
+size = Vector3(0.9824219, 1, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1090253440]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8583025, 0.15234917, 0.16582608)
+
+[node name="Player" parent="." unique_id=1323891999 instance=ExtResource("1_xfvvv")]
+transform = Transform3D(0.99941736, 0, 0.03413201, 0, 1, 0, -0.03413201, 0, 0.99941736, 0.32898962, 0.02399081, 1.276999)
