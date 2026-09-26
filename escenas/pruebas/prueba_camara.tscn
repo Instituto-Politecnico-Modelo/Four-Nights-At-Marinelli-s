@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://dgbhxp4emm04v"]
+
+[ext_resource type="PackedScene" path="res://escenas/jugador/jugador.tscn" id="1_jugador"]
+
+[sub_resource type="Environment" id="entorno"]
+background_mode = 1
+background_color = Color(0.08, 0.08, 0.1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.9, 0.9, 0.95, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 3
+
+[sub_resource type="PlaneMesh" id="mesh_piso"]
+size = Vector2(20, 20)
+
+[sub_resource type="StandardMaterial3D" id="mat_piso"]
+albedo_color = Color(0.45, 0.45, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="mesh_pared_lateral"]
+size = Vector3(0.1, 3, 8)
+
+[sub_resource type="StandardMaterial3D" id="mat_pared"]
+albedo_color = Color(0.74, 0.71, 0.63, 1)
+
+[sub_resource type="BoxMesh" id="mesh_ventana"]
+size = Vector3(0.05, 1, 1.4)
+
+[sub_resource type="StandardMaterial3D" id="mat_ventana"]
+albedo_color = Color(0.3, 0.5, 0.7, 1)
+
+[sub_resource type="BoxMesh" id="mesh_puerta"]
+size = Vector3(0.05, 2.1, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="mat_puerta"]
+albedo_color = Color(0.6, 0.33, 0.14, 1)
+
+[sub_resource type="BoxMesh" id="mesh_pared_frontal"]
+size = Vector3(5, 3, 0.1)
+
+[sub_resource type="BoxMesh" id="mesh_escritorio"]
+size = Vector3(1.6, 0.75, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="mat_escritorio"]
+albedo_color = Color(0.35, 0.25, 0.18, 1)
+
+[node name="PruebaCamara" type="Node3D" unique_id=324597094]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=84804841]
+environment = SubResource("entorno")
+
+[node name="Luz" type="OmniLight3D" parent="." unique_id=474490413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, -0.5)
+light_energy = 1.5
+shadow_enabled = true
+omni_range = 8.0
+
+[node name="Piso" type="MeshInstance3D" parent="." unique_id=1668754175]
+mesh = SubResource("mesh_piso")
+surface_material_override/0 = SubResource("mat_piso")
+
+[node name="ParedIzquierda" type="MeshInstance3D" parent="." unique_id=1403113111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1.5, 0)
+mesh = SubResource("mesh_pared_lateral")
+surface_material_override/0 = SubResource("mat_pared")
+
+[node name="Ventana" type="MeshInstance3D" parent="." unique_id=959877122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43, 1.5, -1.2)
+mesh = SubResource("mesh_ventana")
+surface_material_override/0 = SubResource("mat_ventana")
+
+[node name="TextoVentana" type="Label3D" parent="." unique_id=1453243380]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -2.4, 2.25, -1.2)
+text = "VENTANA"
+font_size = 64
+
+[node name="ParedDerecha" type="MeshInstance3D" parent="." unique_id=1343148724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.5, 0)
+mesh = SubResource("mesh_pared_lateral")
+surface_material_override/0 = SubResource("mat_pared")
+
+[node name="Puerta" type="MeshInstance3D" parent="." unique_id=1688944466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43, 1.05, -1.2)
+mesh = SubResource("mesh_puerta")
+surface_material_override/0 = SubResource("mat_puerta")
+
+[node name="TextoPuerta" type="Label3D" parent="." unique_id=22810131]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2.4, 2.35, -1.2)
+text = "PUERTA"
+font_size = 64
+
+[node name="ParedFrontal" type="MeshInstance3D" parent="." unique_id=1588740852]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -3)
+mesh = SubResource("mesh_pared_frontal")
+surface_material_override/0 = SubResource("mat_pared")
+
+[node name="Escritorio" type="MeshInstance3D" parent="." unique_id=496862632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, -1.4)
+mesh = SubResource("mesh_escritorio")
+surface_material_override/0 = SubResource("mat_escritorio")
+
+[node name="Jugador" parent="." unique_id=1921400632 instance=ExtResource("1_jugador")]
