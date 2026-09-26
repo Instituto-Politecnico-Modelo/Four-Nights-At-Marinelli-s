@@ -1,0 +1,362 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/computadora/escritorio_xp.gd" id="1_escritorio"]
+[ext_resource type="Theme" path="res://escenas/computadora/tema_xp.tres" id="2_tema"]
+[ext_resource type="Texture2D" path="res://assets/xp/bliss.svg" id="3_bliss"]
+[ext_resource type="Texture2D" path="res://assets/xp/icono_camara.svg" id="4_icono_camara"]
+[ext_resource type="Texture2D" path="res://assets/xp/icono_puzzle.svg" id="5_icono_puzzle"]
+[ext_resource type="Texture2D" path="res://assets/xp/logo_windows.svg" id="6_logo"]
+[ext_resource type="Texture2D" path="res://assets/xp/usuario.svg" id="7_usuario"]
+[ext_resource type="Texture2D" path="res://assets/xp/apagar.svg" id="8_apagar"]
+[ext_resource type="PackedScene" path="res://escenas/computadora/ventana_xp.tscn" id="9_ventana"]
+[ext_resource type="PackedScene" path="res://escenas/computadora/programa_camaras.tscn" id="10_prog_camaras"]
+[ext_resource type="PackedScene" path="res://escenas/computadora/programa_puzzle.tscn" id="11_prog_puzzle"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_abrir_ventana.gd" id="12_abrir"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_reloj.gd" id="13_reloj"]
+
+[sub_resource type="Gradient" id="gradiente_barra"]
+offsets = PackedFloat32Array(0, 0.1, 0.5, 0.9, 1)
+colors = PackedColorArray(0.24, 0.51, 0.95, 1, 0.14, 0.4, 0.88, 1, 0.14, 0.37, 0.86, 1, 0.12, 0.33, 0.8, 1, 0.1, 0.26, 0.65, 1)
+
+[sub_resource type="GradientTexture2D" id="textura_barra"]
+gradient = SubResource("gradiente_barra")
+width = 16
+height = 30
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="gradiente_menu"]
+offsets = PackedFloat32Array(0, 0.15, 1)
+colors = PackedColorArray(0.35, 0.6, 1, 1, 0.1, 0.4, 0.9, 1, 0.05, 0.3, 0.8, 1)
+
+[sub_resource type="GradientTexture2D" id="textura_menu"]
+gradient = SubResource("gradiente_menu")
+width = 16
+height = 54
+fill_to = Vector2(0, 1)
+
+[sub_resource type="SystemFont" id="fuente_inicio"]
+font_names = PackedStringArray("Tahoma", "Verdana", "Arial")
+font_italic = true
+font_weight = 700
+
+[sub_resource type="StyleBoxFlat" id="inicio_normal"]
+content_margin_left = 10.0
+content_margin_right = 16.0
+bg_color = Color(0.22, 0.6, 0.22, 1)
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.45, 0.8, 0.4, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="inicio_hover"]
+content_margin_left = 10.0
+content_margin_right = 16.0
+bg_color = Color(0.3, 0.7, 0.28, 1)
+border_width_top = 1
+border_width_right = 1
+border_color = Color(0.55, 0.9, 0.5, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="inicio_presionado"]
+content_margin_left = 10.0
+content_margin_right = 16.0
+bg_color = Color(0.15, 0.45, 0.15, 1)
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="bandeja"]
+bg_color = Color(0.06, 0.55, 0.93, 1)
+border_width_left = 1
+border_color = Color(0.06, 0.26, 0.69, 1)
+
+[sub_resource type="StyleBoxFlat" id="menu_fondo"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.04, 0.26, 0.75, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[node name="EscritorioXP" type="Control" node_paths=PackedStringArray("fondo", "menu_inicio", "boton_inicio", "boton_apagar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_tema")
+script = ExtResource("1_escritorio")
+fondo = NodePath("Fondo")
+menu_inicio = NodePath("MenuInicio")
+boton_inicio = NodePath("BarraTareas/BotonInicio")
+boton_apagar = NodePath("MenuInicio/BotonApagar")
+
+[node name="Fondo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("3_bliss")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Iconos" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 106.0
+offset_bottom = 216.0
+theme_override_constants/separation = 14
+
+[node name="IconoCamaras" type="Button" parent="Iconos"]
+custom_minimum_size = Vector2(90, 84)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 3
+text = "Cámaras"
+icon = ExtResource("4_icono_camara")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="IconoPuzzle" type="Button" parent="Iconos"]
+custom_minimum_size = Vector2(90, 84)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
+theme_override_constants/outline_size = 3
+text = "Puzzle"
+icon = ExtResource("5_icono_puzzle")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="Ventanas" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VentanaCamaras" parent="Ventanas" instance=ExtResource("9_ventana")]
+visible = false
+layout_mode = 0
+offset_left = 140.0
+offset_top = 30.0
+offset_right = 960.0
+offset_bottom = 520.0
+titulo = "Cámaras de seguridad"
+programa = ExtResource("10_prog_camaras")
+
+[node name="VentanaPuzzle" parent="Ventanas" instance=ExtResource("9_ventana")]
+visible = false
+layout_mode = 0
+offset_left = 360.0
+offset_top = 80.0
+offset_right = 690.0
+offset_bottom = 500.0
+titulo = "Puzzle"
+programa = ExtResource("11_prog_puzzle")
+
+[node name="MenuInicio" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -420.0
+offset_right = 300.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("menu_fondo")
+
+[node name="Cabecera" type="TextureRect" parent="MenuInicio"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 56.0
+grow_horizontal = 2
+texture = SubResource("textura_menu")
+expand_mode = 1
+
+[node name="Avatar" type="TextureRect" parent="MenuInicio/Cabecera"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 48.0
+offset_bottom = 47.0
+texture = ExtResource("7_usuario")
+
+[node name="Usuario" type="Label" parent="MenuInicio/Cabecera"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 14.0
+offset_right = 280.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.1, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "Personal"
+
+[node name="Lista" type="VBoxContainer" parent="MenuInicio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 64.0
+offset_right = -6.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemCamaras" type="Button" parent="MenuInicio/Lista"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+text = "Cámaras de seguridad"
+icon = ExtResource("4_icono_camara")
+flat = true
+alignment = 0
+
+[node name="ItemPuzzle" type="Button" parent="MenuInicio/Lista"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_constants/icon_max_width = 32
+text = "Puzzle"
+icon = ExtResource("5_icono_puzzle")
+flat = true
+alignment = 0
+
+[node name="Pie" type="TextureRect" parent="MenuInicio"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -46.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("textura_menu")
+expand_mode = 1
+
+[node name="BotonApagar" type="Button" parent="MenuInicio"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+text = "Apagar equipo"
+icon = ExtResource("8_apagar")
+flat = true
+
+[node name="BarraTareas" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 0
+texture = SubResource("textura_barra")
+expand_mode = 1
+
+[node name="BotonInicio" type="Button" parent="BarraTareas"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.3, 0.1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("fuente_inicio")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("inicio_normal")
+theme_override_styles/hover = SubResource("inicio_hover")
+theme_override_styles/pressed = SubResource("inicio_presionado")
+text = "inicio"
+icon = ExtResource("6_logo")
+
+[node name="Bandeja" type="Panel" parent="BarraTareas"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("bandeja")
+
+[node name="Reloj" type="Label" parent="BarraTareas/Bandeja"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_reloj")
+
+[node name="AbrirCamaras" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana")]
+script = ExtResource("12_abrir")
+boton = NodePath("../Iconos/IconoCamaras")
+ventana = NodePath("../Ventanas/VentanaCamaras")
+doble_click = true
+
+[node name="AbrirPuzzle" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana")]
+script = ExtResource("12_abrir")
+boton = NodePath("../Iconos/IconoPuzzle")
+ventana = NodePath("../Ventanas/VentanaPuzzle")
+doble_click = true
+
+[node name="MenuCamaras" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana", "menu")]
+script = ExtResource("12_abrir")
+boton = NodePath("../MenuInicio/Lista/ItemCamaras")
+ventana = NodePath("../Ventanas/VentanaCamaras")
+menu = NodePath("../MenuInicio")
+
+[node name="MenuPuzzle" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana", "menu")]
+script = ExtResource("12_abrir")
+boton = NodePath("../MenuInicio/Lista/ItemPuzzle")
+ventana = NodePath("../Ventanas/VentanaPuzzle")
+menu = NodePath("../MenuInicio")
