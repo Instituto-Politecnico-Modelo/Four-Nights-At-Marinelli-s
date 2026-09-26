@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://da0xfnkstgvu"]
+
+[ext_resource type="Texture2D" uid="uid://cmjglko8bl505" path="res://assests/charlieDerecha.png" id="1_derecha"]
+[ext_resource type="Texture2D" uid="uid://4r7v8n5gw6gm" path="res://assests/charlieIzquierda.png" id="2_izquierda"]
+[ext_resource type="Script" uid="uid://dbb8u8jcyd6xq" path="res://personajes/charlie/componentes/movement_component.gd" id="3_movimiento"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ogq"]
+height = 64.0
+
+[node name="Charlie" type="CharacterBody2D" unique_id=41655106]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1447101835]
+texture_filter = 1
+position = Vector2(166, 134)
+scale = Vector2(7.06, 7.8349996)
+texture = ExtResource("1_derecha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048662718]
+position = Vector2(0, 12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_v3ogq")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=676077895]
+script = ExtResource("3_movimiento")
+textura_derecha = ExtResource("1_derecha")
+textura_izquierda = ExtResource("2_izquierda")

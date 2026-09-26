@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://4pqund3nukl7"]
+
+[ext_resource type="Texture2D" uid="uid://cwtbnxgbiqc5c" path="res://assests/mapa.png" id="1_tjyhn"]
+[ext_resource type="PackedScene" uid="uid://da0xfnkstgvu" path="res://personajes/charlie/charlie.tscn" id="2_re0in"]
+
+[node name="Nivel1" type="Node2D" unique_id=286532851]
+
+[node name="Mapa" type="Sprite2D" parent="." unique_id=2084023261]
+texture_filter = 1
+position = Vector2(603.00006, 313)
+scale = Vector2(7.8, 7.2549996)
+texture = ExtResource("1_tjyhn")
+
+[node name="Charlie" parent="." unique_id=41655106 instance=ExtResource("2_re0in")]
+position = Vector2(368, 363)
