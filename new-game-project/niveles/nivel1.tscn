@@ -1,7 +1,12 @@
-[gd_scene format=3 uid="uid://4pqund3nukl7"]
+[gd_scene load_steps=4 format=3 uid="uid://4pqund3nukl7"]
 
 [ext_resource type="Texture2D" uid="uid://cwtbnxgbiqc5c" path="res://assests/mapa.png" id="1_tjyhn"]
 [ext_resource type="PackedScene" uid="uid://da0xfnkstgvu" path="res://personajes/charlie/charlie.tscn" id="2_re0in"]
+[ext_resource type="Script" path="res://interactuables/interactable_component.gd" id="3_interactuable"]
+[ext_resource type="PackedScene" path="res://ui/interaction_prompt/interaction_prompt.tscn" id="4_prompt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prueba"]
+radius = 40.0
 
 [node name="Nivel1" type="Node2D" unique_id=286532851]
 
@@ -13,3 +18,24 @@ texture = ExtResource("1_tjyhn")
 
 [node name="Charlie" parent="." unique_id=41655106 instance=ExtResource("2_re0in")]
 position = Vector2(368, 363)
+
+[node name="InteractuablePrueba" type="Area2D" parent="."]
+position = Vector2(550, 363)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_interactuable")
+texto_interaccion = "mensaje de prueba"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractuablePrueba"]
+shape = SubResource("CircleShape2D_prueba")
+
+[node name="Etiqueta" type="Label" parent="InteractuablePrueba"]
+offset_left = -80.0
+offset_top = -60.0
+offset_right = 80.0
+offset_bottom = -30.0
+horizontal_alignment = 1
+text = "mensaje de prueba"
+
+[node name="InteractionPrompt" parent="." instance=ExtResource("4_prompt")]
