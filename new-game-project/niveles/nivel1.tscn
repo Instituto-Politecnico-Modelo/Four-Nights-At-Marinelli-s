@@ -5,8 +5,26 @@
 [ext_resource type="PackedScene" uid="uid://bqxqf5j0h3n8t" path="res://ui/interaction_prompt/interaction_prompt.tscn" id="4_prompt"]
 [ext_resource type="PackedScene" uid="uid://dufntffiu550f" path="res://interactuables/computadora/computadora.tscn" id="5_computadora"]
 [ext_resource type="PackedScene" uid="uid://dqx8m2n3v4c5t" path="res://ui/pista_popup/pista_popup.tscn" id="6_pista_popup"]
-[ext_resource type="PackedScene" path="res://interactuables/laptop/laptop.tscn" id="7_laptop"]
-[ext_resource type="PackedScene" path="res://ui/password_input/password_input.tscn" id="8_password_input"]
+[ext_resource type="PackedScene" uid="uid://b8m3x7q2n5w1c" path="res://interactuables/laptop/laptop.tscn" id="7_laptop"]
+[ext_resource type="PackedScene" uid="uid://w2l04duejio6" path="res://ui/password_input/password_input.tscn" id="8_password_input"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7kka"]
+size = Vector2(9, 399)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6c0m"]
+size = Vector2(10.363464, 491.83524)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rml80"]
+size = Vector2(515.5, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmcqe"]
+size = Vector2(92.5, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8hoo"]
+size = Vector2(7, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mncda"]
+size = Vector2(396, 9)
 
 [node name="Nivel1" type="Node2D" unique_id=286532851]
 
@@ -19,14 +37,56 @@ texture = ExtResource("1_tjyhn")
 [node name="Charlie" parent="." unique_id=41655106 instance=ExtResource("2_re0in")]
 position = Vector2(368, 363)
 
-[node name="Computadora" parent="." unique_id=353010397 instance=ExtResource("5_computadora")]
-position = Vector2(544, 370)
-
 [node name="Laptop" parent="." unique_id=467114164 instance=ExtResource("7_laptop")]
-position = Vector2(381, 241)
+position = Vector2(385, 244)
 
 [node name="InteractionPrompt" parent="." unique_id=1269442710 instance=ExtResource("4_prompt")]
 
 [node name="PistaPopup" parent="." unique_id=1091795083 instance=ExtResource("6_pista_popup")]
 
 [node name="PasswordInput" parent="." unique_id=1145428047 instance=ExtResource("8_password_input")]
+
+[node name="Paredes" type="Node2D" parent="." unique_id=849180586]
+
+[node name="Izquierda" type="StaticBody2D" parent="Paredes" unique_id=2146413881]
+position = Vector2(311, 310)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Izquierda" unique_id=1485721769]
+shape = SubResource("RectangleShape2D_h7kka")
+
+[node name="Diagonal" type="StaticBody2D" parent="Paredes" unique_id=1446110079]
+position = Vector2(802, 331)
+rotation = 2.687807
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Diagonal" unique_id=594599038]
+position = Vector2(2.9444695e-05, -6.842613e-05)
+shape = SubResource("RectangleShape2D_p6c0m")
+
+[node name="Abajo" type="StaticBody2D" parent="Paredes" unique_id=733374107]
+position = Vector2(649, 556)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Abajo" unique_id=712199651]
+shape = SubResource("RectangleShape2D_rml80")
+
+[node name="AbajoChico" type="StaticBody2D" parent="Paredes" unique_id=829769466]
+position = Vector2(354, 505)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/AbajoChico" unique_id=1943255165]
+shape = SubResource("RectangleShape2D_cmcqe")
+
+[node name="IzquierdaChico" type="StaticBody2D" parent="Paredes" unique_id=1548507404]
+position = Vector2(396, 530)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/IzquierdaChico" unique_id=1517603625]
+shape = SubResource("RectangleShape2D_u8hoo")
+
+[node name="Arriba" type="StaticBody2D" parent="Paredes" unique_id=818097161]
+position = Vector2(505, 114)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Arriba" unique_id=2017843193]
+shape = SubResource("RectangleShape2D_mncda")
+
+[node name="Escritorios" type="Node2D" parent="." unique_id=384591728]
+
+[node name="Computadora" parent="Escritorios" unique_id=353010397 instance=ExtResource("5_computadora")]
+position = Vector2(544, 370)
