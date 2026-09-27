@@ -14,5 +14,17 @@ size = Vector3(0.9824219, 1, 1)
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1090253440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8583025, 0.15234917, 0.16582608)
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1615381601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6304584, 0.20045054, 1.0123307)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1840125556]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.716605, 0.22164404, 0.33165216)
+
 [node name="Player" parent="." unique_id=1323891999 instance=ExtResource("1_xfvvv")]
-transform = Transform3D(0.99941736, 0, 0.03413201, 0, 1, 0, -0.03413201, 0, 0.99941736, 0.32898962, 0.02399081, 1.276999)
+transform = Transform3D(0.99941736, 0, 0.03413201, 0, 1, 0, -0.03413201, 0, 0.99941736, -0.13720286, 0.02399081, 1.1498272)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1982281333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0957246, 0.20098948, 0.30919445)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D6" unique_id=1514205585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6339004, -0.03565681, 0.58818114)

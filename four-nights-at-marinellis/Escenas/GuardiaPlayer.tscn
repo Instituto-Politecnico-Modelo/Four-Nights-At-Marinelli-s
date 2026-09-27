@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://b66derbsbgm0j"]
 
-[node name="Player" type="Node3D" unique_id=1323891999]
+[ext_resource type="Script" path="res://Scripts/Camara/CamaraGuardiaOficina.gd" id="1_camara"]
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("camara") unique_id=1323891999]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4317352)
 metadata/_edit_group_ = true
+script = ExtResource("1_camara")
+camara = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1679521215]
 fov = 111.24726
