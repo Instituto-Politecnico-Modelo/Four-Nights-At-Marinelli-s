@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bqxqf5j0h3n8t" path="res://ui/interaction_prompt/interaction_prompt.tscn" id="4_prompt"]
 [ext_resource type="PackedScene" uid="uid://dufntffiu550f" path="res://interactuables/computadora/computadora.tscn" id="5_computadora"]
 [ext_resource type="PackedScene" uid="uid://dqx8m2n3v4c5t" path="res://ui/pista_popup/pista_popup.tscn" id="6_pista_popup"]
+[ext_resource type="PackedScene" path="res://interactuables/laptop/laptop.tscn" id="7_laptop"]
+[ext_resource type="PackedScene" path="res://ui/password_input/password_input.tscn" id="8_password_input"]
 
 [node name="Nivel1" type="Node2D" unique_id=286532851]
 
@@ -20,7 +22,11 @@ position = Vector2(368, 363)
 [node name="Computadora" parent="." unique_id=353010397 instance=ExtResource("5_computadora")]
 position = Vector2(544, 370)
 
+[node name="Laptop" parent="." unique_id=467114164 instance=ExtResource("7_laptop")]
+position = Vector2(381, 241)
+
 [node name="InteractionPrompt" parent="." unique_id=1269442710 instance=ExtResource("4_prompt")]
 
 [node name="PistaPopup" parent="." unique_id=1091795083 instance=ExtResource("6_pista_popup")]
-visible = false
+
+[node name="PasswordInput" parent="." unique_id=1145428047 instance=ExtResource("8_password_input")]

@@ -8,6 +8,7 @@ signal interactuable_desenfocado(interactuable: Node)
 signal interactuado(interactuable: Node)
 
 signal pista_descubierta(pista: PistaResource)
+signal laptop_abierta(laptop: Node)
 signal intento_contrasenia_fallido()
 signal laptop_desbloqueada()
 
