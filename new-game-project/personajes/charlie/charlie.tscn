@@ -9,7 +9,7 @@
 height = 64.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interactor"]
-radius = 74.0
+radius = 86.023254
 
 [node name="Charlie" type="CharacterBody2D" unique_id=41655106]
 scale = Vector2(0.5, 0.5)

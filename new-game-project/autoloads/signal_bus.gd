@@ -7,7 +7,7 @@ signal interactuable_enfocado(interactuable: Node)
 signal interactuable_desenfocado(interactuable: Node)
 signal interactuado(interactuable: Node)
 
-signal pista_descubierta(clue_id: StringName)
+signal pista_descubierta(pista: PistaResource)
 signal intento_contrasenia_fallido()
 signal laptop_desbloqueada()
 

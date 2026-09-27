@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dufntffiu550f"]
+
+[ext_resource type="Script" uid="uid://ppjewc2g75mj" path="res://interactuables/computadora/computadora.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://d3p7cvbu77jkg" path="res://interactuables/interactable_component.gd" id="2_interactuable"]
+[ext_resource type="Resource" path="res://resources/pistas/pista_prueba.tres" id="3_pista"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(74, 40)
+
+[node name="Computadora" type="Node2D" unique_id=1722861847]
+script = ExtResource("1_script")
+pista = ExtResource("3_pista")
+
+[node name="InteractableComponent" type="Area2D" parent="." unique_id=2010885941]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_interactuable")
+texto_interaccion = "Revisar computadora"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=1330894031]
+shape = SubResource("RectangleShape2D_1")

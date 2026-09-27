@@ -7,6 +7,7 @@ enum LevelState {
 }
 
 var estado_actual: LevelState = LevelState.INVESTIGANDO
+var ui_modal_abierta: bool = false
 
 func _ready() -> void:
 	SignalBus.laptop_desbloqueada.connect(_on_laptop_unlocked)

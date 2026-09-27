@@ -14,6 +14,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if GameManager.ui_modal_abierta:
+		return
 	if event.is_action_pressed("interactuar") and _enfocado != null:
 		SignalBus.interactuado.emit(_enfocado)
 		_enfocado.interactuado.emit()
