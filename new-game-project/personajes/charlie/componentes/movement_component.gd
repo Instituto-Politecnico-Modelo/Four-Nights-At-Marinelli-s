@@ -1,5 +1,9 @@
 extends Node
 class_name MovementComponent
+## MovementComponent
+## Maneja el movimiento top-down de Charlie a partir del Input Map (WASD)
+## y cambia la textura del sprite (derecha/izquierda) segun la direccion
+## horizontal.
 
 @export var cuerpo: CharacterBody2D
 @export var sprite: Sprite2D

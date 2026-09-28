@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dqx8m2n3v4c5t" path="res://ui/pista_popup/pista_popup.tscn" id="6_pista_popup"]
 [ext_resource type="PackedScene" uid="uid://b8m3x7q2n5w1c" path="res://interactuables/laptop/laptop.tscn" id="7_laptop"]
 [ext_resource type="PackedScene" uid="uid://w2l04duejio6" path="res://ui/password_input/password_input.tscn" id="8_password_input"]
+[ext_resource type="PackedScene" uid="uid://tj3qrivxfcle" path="res://personajes/pruscino/pruscino.tscn" id="9_pruscino"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h7kka"]
 size = Vector2(9, 399)
@@ -26,6 +27,12 @@ size = Vector2(7, 56)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mncda"]
 size = Vector2(396, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wg7mc"]
+size = Vector2(30, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25vn2"]
+size = Vector2(78, 58)
+
 [node name="Nivel1" type="Node2D" unique_id=286532851]
 
 [node name="Mapa" type="Sprite2D" parent="." unique_id=2084023261]
@@ -41,12 +48,22 @@ position = Vector2(368, 363)
 position = Vector2(385, 244)
 
 [node name="InteractionPrompt" parent="." unique_id=1269442710 instance=ExtResource("4_prompt")]
+visible = false
 
 [node name="PistaPopup" parent="." unique_id=1091795083 instance=ExtResource("6_pista_popup")]
+visible = false
 
 [node name="PasswordInput" parent="." unique_id=1145428047 instance=ExtResource("8_password_input")]
+visible = false
 
 [node name="Paredes" type="Node2D" parent="." unique_id=849180586]
+
+[node name="ZonaNegra" type="StaticBody2D" parent="Paredes"]
+collision_layer = 1
+collision_mask = 1
+
+[node name="Colision" type="CollisionPolygon2D" parent="Paredes/ZonaNegra"]
+polygon = PackedVector2Array(585, 112, 699, 112, 785, 291, 585, 291)
 
 [node name="Izquierda" type="StaticBody2D" parent="Paredes" unique_id=2146413881]
 position = Vector2(311, 310)
@@ -90,3 +107,62 @@ shape = SubResource("RectangleShape2D_mncda")
 
 [node name="Computadora" parent="Escritorios" unique_id=353010397 instance=ExtResource("5_computadora")]
 position = Vector2(544, 370)
+
+[node name="Computadora2" parent="Escritorios" unique_id=1590920936 instance=ExtResource("5_computadora")]
+position = Vector2(447, 208)
+
+[node name="Computadora3" parent="Escritorios" unique_id=1863675365 instance=ExtResource("5_computadora")]
+position = Vector2(541, 208)
+
+[node name="Computadora4" parent="Escritorios" unique_id=783282025 instance=ExtResource("5_computadora")]
+position = Vector2(447, 266)
+
+[node name="Computadora5" parent="Escritorios" unique_id=802866413 instance=ExtResource("5_computadora")]
+position = Vector2(541, 266)
+
+[node name="Computadora6" parent="Escritorios" unique_id=421202749 instance=ExtResource("5_computadora")]
+position = Vector2(634, 367)
+
+[node name="Computadora7" parent="Escritorios" unique_id=1013055463 instance=ExtResource("5_computadora")]
+position = Vector2(728, 367)
+
+[node name="Computadora8" parent="Escritorios" unique_id=1671437439 instance=ExtResource("5_computadora")]
+position = Vector2(447, 426)
+
+[node name="Computadora9" parent="Escritorios" unique_id=816737981 instance=ExtResource("5_computadora")]
+position = Vector2(541, 426)
+
+[node name="Computadora10" parent="Escritorios" unique_id=138034368 instance=ExtResource("5_computadora")]
+position = Vector2(634, 426)
+
+[node name="Computadora11" parent="Escritorios" unique_id=319652484 instance=ExtResource("5_computadora")]
+position = Vector2(728, 426)
+
+[node name="Computadora12" parent="Escritorios" unique_id=1592957528 instance=ExtResource("5_computadora")]
+position = Vector2(447, 520)
+
+[node name="Computadora13" parent="Escritorios" unique_id=718920657 instance=ExtResource("5_computadora")]
+position = Vector2(541, 520)
+
+[node name="Computadora14" parent="Escritorios" unique_id=479395679 instance=ExtResource("5_computadora")]
+position = Vector2(634, 520)
+
+[node name="Computadora15" parent="Escritorios" unique_id=1722861847 instance=ExtResource("5_computadora")]
+position = Vector2(450, 372)
+
+[node name="Pruscino" parent="." unique_id=1332478165 instance=ExtResource("9_pruscino")]
+position = Vector2(499, 479)
+
+[node name="Muebleria" type="Node2D" parent="." unique_id=1869126803]
+
+[node name="MuebleAzul" type="StaticBody2D" parent="Muebleria" unique_id=1746301854]
+position = Vector2(331, 179)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Muebleria/MuebleAzul" unique_id=862224165]
+shape = SubResource("RectangleShape2D_wg7mc")
+
+[node name="Rack" type="StaticBody2D" parent="Muebleria" unique_id=1483084386]
+position = Vector2(549, 154)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Muebleria/Rack" unique_id=920132051]
+shape = SubResource("RectangleShape2D_25vn2")

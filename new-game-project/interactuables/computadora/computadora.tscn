@@ -19,3 +19,8 @@ texto_interaccion = "Revisar computadora"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=1330894031]
 shape = SubResource("RectangleShape2D_1")
+
+[node name="Solido" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Solido"]
+shape = SubResource("RectangleShape2D_1")
