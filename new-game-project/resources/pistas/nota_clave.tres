@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"nota_clave"
+texto = "ARCHIVO: recordatorio_personal.txt\n\nClave de mi laptop: usar la fecha de la PRIMERA APERTURA de UMBRAL, no la de revisión.\n\nEl año sobra. Conservar solamente el día y el mes.\n— Pruscino"

@@ -1,12 +1,12 @@
 extends Node
 class_name DetectionComponent
 ## DetectionComponent
-## Detecta a Charlie por cono de vision (rango + angulo respecto a la
+## Detecta por proximidad con AreaCaptura o por cono de vision (rango + angulo respecto a la
 ## direccion en la que Pruscino esta mirando, segun PatrolComponent) y
 ## confirma con un raycast que no haya nada en el medio (linea de vision
 ## libre). Si Charlie esta escondido (GameManager.charlie_escondido), nunca
 ## lo detecta. Al detectarlo, emite charlie_descubierto_por y charlie_atrapado
-## una unica vez (sin consecuencia visible todavia - eso es un commit aparte).
+## una unica vez; GameManager y la UI gestionan la captura.
 
 @export var cuerpo: CharacterBody2D
 @export var patrulla: PatrolComponent
@@ -14,6 +14,7 @@ class_name DetectionComponent
 @export var angulo_vision_grados: float = 100.0
 
 var _ya_detecto: bool = false
+var _area_captura: Area2D
 
 
 func _ready() -> void:
@@ -21,6 +22,8 @@ func _ready() -> void:
 		cuerpo = get_parent() as CharacterBody2D
 	if patrulla == null and cuerpo != null:
 		patrulla = cuerpo.get_node_or_null("PatrolComponent") as PatrolComponent
+	if cuerpo != null:
+		_area_captura = cuerpo.get_node_or_null("AreaCaptura") as Area2D
 
 
 func _physics_process(_delta: float) -> void:
@@ -32,6 +35,12 @@ func _physics_process(_delta: float) -> void:
 
 	var charlie: Node2D = get_tree().get_first_node_in_group("charlie") as Node2D
 	if charlie == null:
+		return
+
+	# Reevaluar mientras permanece dentro: salir del escondite tambien captura.
+	if _area_captura != null and _area_captura.overlaps_body(charlie):
+		if _hay_linea_de_vision(charlie):
+			_capturar()
 		return
 
 	var hacia_charlie: Vector2 = charlie.global_position - cuerpo.global_position
@@ -49,6 +58,10 @@ func _physics_process(_delta: float) -> void:
 	if not _hay_linea_de_vision(charlie):
 		return
 
+	_capturar()
+
+
+func _capturar() -> void:
 	_ya_detecto = true
 	SignalBus.charlie_descubierto_por.emit(cuerpo)
 	SignalBus.charlie_atrapado.emit()
@@ -56,8 +69,10 @@ func _physics_process(_delta: float) -> void:
 
 func _hay_linea_de_vision(charlie: Node2D) -> bool:
 	var espacio: PhysicsDirectSpaceState2D = cuerpo.get_world_2d().direct_space_state
+	var colision := charlie.get_node_or_null("CollisionShape2D") as CollisionShape2D
+	var destino := colision.global_position if colision != null else charlie.global_position
 	var parametros: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(
-		cuerpo.global_position, charlie.global_position
+		cuerpo.global_position, destino
 	)
 	parametros.exclude = [cuerpo.get_rid()]
 

@@ -8,6 +8,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1"]
 height = 64.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_captura"]
+radius = 150.0
+
 [node name="Pruscino" type="CharacterBody2D" unique_id=350537431]
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
@@ -32,6 +35,14 @@ textura_izquierda = ExtResource("1b_izquierda")
 
 [node name="DetectionComponent" type="Node" parent="." unique_id=1531801082]
 script = ExtResource("3_detection")
+
+[node name="AreaCaptura" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitorable = false
+
+[node name="Colision" type="CollisionShape2D" parent="AreaCaptura"]
+shape = SubResource("CircleShape2D_captura")
 
 [node name="Puntos" type="Node2D" parent="."]
 scale = Vector2(2, 2)

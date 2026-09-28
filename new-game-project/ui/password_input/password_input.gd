@@ -20,7 +20,7 @@ func _ready() -> void:
 	SignalBus.laptop_abierta.connect(_on_laptop_abierta)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if panel.visible and event.is_action_pressed("interactuar"):
 		_cerrar()
 		get_viewport().set_input_as_handled()
@@ -40,20 +40,18 @@ func _on_text_submitted(texto: String) -> void:
 	if _laptop_actual == null:
 		return
 
-	var intento: String = texto.strip_edges()
-	var esperado: String = _laptop_actual.contrasenia_correcta.strip_edges()
-
-	if intento == esperado:
-		SignalBus.laptop_desbloqueada.emit()
+	if _laptop_actual.intentar_desbloquear(texto):
+		var laptop := _laptop_actual
 		_cerrar()
+		laptop.mostrar_archivo()
 	else:
-		SignalBus.intento_contrasenia_fallido.emit()
 		etiqueta_error.visible = true
 		campo.text = ""
 		campo.grab_focus()
 
 
 func _cerrar() -> void:
+	campo.release_focus()
 	panel.visible = false
 	GameManager.ui_modal_abierta = false
 	get_tree().paused = false

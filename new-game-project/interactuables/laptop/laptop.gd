@@ -1,11 +1,12 @@
 extends Node2D
 class_name Laptop
 ## Laptop
-## La laptop de Pruscino. Al interactuar, no valida la contrasenia ella misma:
-## le avisa a la UI (PasswordInput) que se abra, pasandose a si misma para
-## que esta pueda comparar contra su propia contrasenia_correcta.
+## Guarda el desbloqueo del intento actual y permite releer el archivo.
 
-@export var contrasenia_correcta: String = "1984"
+@export var contrasenia_correcta: String = "1409"
+@export var archivo_secreto: PistaResource = preload("res://resources/pistas/archivo_secreto.tres")
+
+var desbloqueada: bool = false
 
 @onready var interactuable: InteractableComponent = $InteractableComponent
 
@@ -15,4 +16,23 @@ func _ready() -> void:
 
 
 func _on_interactuado() -> void:
-	SignalBus.laptop_abierta.emit(self)
+	if desbloqueada:
+		mostrar_archivo()
+	else:
+		SignalBus.laptop_abierta.emit(self)
+
+
+func intentar_desbloquear(texto: String) -> bool:
+	if desbloqueada:
+		return true
+	if texto.strip_edges() != contrasenia_correcta.strip_edges():
+		SignalBus.intento_contrasenia_fallido.emit()
+		return false
+	desbloqueada = true
+	SignalBus.laptop_desbloqueada.emit()
+	return true
+
+
+func mostrar_archivo() -> void:
+	if desbloqueada and archivo_secreto != null:
+		SignalBus.pista_descubierta.emit(archivo_secreto)
