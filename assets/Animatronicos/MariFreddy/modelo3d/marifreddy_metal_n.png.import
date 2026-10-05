@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1hh1awckwrq5"
-path.s3tc="res://.godot/imported/pruscino_oreja_int_n.png-0e85de55a908460eb4b52703e1bdfcbd.s3tc.ctex"
+uid="uid://bs40p6xfs8pjg"
+path.s3tc="res://.godot/imported/marifreddy_metal_n.png-6103190c2029409b02a4acc3de5ab872.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d002e24e7a117d61f58bff27eee54e36"
+"md5": "e38f01315a3b7ac85855df50ad6469fd"
 }
 
 [deps]
 
-source_file="res://modelo3d/pruscino_oreja_int_n.png"
-dest_files=["res://.godot/imported/pruscino_oreja_int_n.png-0e85de55a908460eb4b52703e1bdfcbd.s3tc.ctex"]
+source_file="res://modelo3d/marifreddy_metal_n.png"
+dest_files=["res://.godot/imported/marifreddy_metal_n.png-6103190c2029409b02a4acc3de5ab872.s3tc.ctex"]
 
 [params]
 
@@ -30,7 +30,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://modelo3d/pruscino_oreja_int_n.png"
+roughness/src_normal="res://modelo3d/marifreddy_metal_n.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
