@@ -8,11 +8,17 @@ extends Node
 @export var velocidad: float = 300.0
 
 var cerrada: bool = false
+var cerrando: bool = false
 
 
 func _process(delta: float) -> void:
+	var presionado: bool = interactuable.presionado
+	if presionado and not cerrando:
+		Sonidos.puerta()
+	cerrando = presionado
+
 	var objetivo: float = angulo_abierto
-	if interactuable.presionado:
+	if presionado:
 		objetivo = angulo_cerrado
 
 	bisagra.rotation_degrees.y = move_toward(bisagra.rotation_degrees.y, objetivo, velocidad * delta)

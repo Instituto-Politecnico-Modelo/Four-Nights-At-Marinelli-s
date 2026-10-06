@@ -21,11 +21,13 @@ func _repetir_musica() -> void:
 
 
 func _on_boton_nuevo_juego() -> void:
+	Sonidos.boton_inicio()
 	Guardado.nueva_partida()
 	cambiar_escena(Guardado.ESCENA_NOCHE)
 
 
 func _on_boton_continuar() -> void:
+	Sonidos.boton_inicio()
 	Guardado.cargar_partida()
 	cambiar_escena(Guardado.escena_guardada())
 

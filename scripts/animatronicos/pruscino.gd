@@ -35,6 +35,7 @@ func caminar() -> void:
 func atacar() -> void:
 	atacando = true
 	reproductor.play("ataque", 0.05)
+	Sonidos.jumpscare_prusbonnie()
 
 
 ## Camina hacia adelante (-Z local) mientras suena la animacion de caminata.

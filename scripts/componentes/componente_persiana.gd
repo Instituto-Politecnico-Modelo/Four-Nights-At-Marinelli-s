@@ -8,11 +8,17 @@ extends Node
 @export var velocidad: float = 1.5
 
 var cerrada: bool = false
+var cerrando: bool = false
 
 
 func _process(delta: float) -> void:
+	var presionado: bool = interactuable.presionado
+	if presionado and not cerrando:
+		Sonidos.persiana()
+	cerrando = presionado
+
 	var objetivo: float = escala_abierta
-	if interactuable.presionado:
+	if presionado:
 		objetivo = escala_cerrada
 
 	tela.scale.y = move_toward(tela.scale.y, objetivo, velocidad * delta)

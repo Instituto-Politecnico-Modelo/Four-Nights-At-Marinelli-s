@@ -19,8 +19,13 @@ func _ready() -> void:
 	if Guardado.continuar_partida:
 		reloj.restaurar(Guardado.hora_guardada())
 	reloj.hora_cambiada.connect(_al_cambiar_hora)
+	reloj.noche_terminada.connect(_al_terminar_noche)
 	Guardado.guardar_avance(noche, reloj.hora)
 
 
 func _al_cambiar_hora(hora: int) -> void:
 	Guardado.guardar_avance(noche, hora)
+
+
+func _al_terminar_noche() -> void:
+	Sonidos.seis_am()
