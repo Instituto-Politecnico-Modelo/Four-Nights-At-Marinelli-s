@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"revision"
+texto = "ARCHIVO: revision_umbral.txt\n\nUMBRAL: revisión del 3 de mayo de 2001.\n\nEsto es una inspección posterior. La fecha de la primera apertura figura únicamente en el acta original."

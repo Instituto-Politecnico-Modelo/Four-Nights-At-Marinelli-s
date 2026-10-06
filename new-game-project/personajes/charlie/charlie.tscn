@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://da0xfnkstgvu"]
+
+[ext_resource type="Texture2D" uid="uid://cmjglko8bl505" path="res://assests/charlieDerecha.png" id="1_derecha"]
+[ext_resource type="Texture2D" uid="uid://4r7v8n5gw6gm" path="res://assests/charlieIzquierda.png" id="2_izquierda"]
+[ext_resource type="Script" uid="uid://dbb8u8jcyd6xq" path="res://personajes/charlie/componentes/movement_component.gd" id="3_movimiento"]
+[ext_resource type="Script" uid="uid://167384ghfdyj" path="res://personajes/charlie/componentes/interactor_component.gd" id="4_interactor"]
+[ext_resource type="Script" path="res://personajes/charlie/componentes/hiding_component.gd" id="5_hiding"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3ogq"]
+height = 64.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interactor"]
+radius = 86.023254
+
+[node name="Charlie" type="CharacterBody2D" unique_id=41655106 groups=["charlie"]]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1447101835]
+texture_filter = 1
+position = Vector2(-70, -64)
+scale = Vector2(7.06, 7.8349996)
+texture = ExtResource("1_derecha")
+hframes = 3
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1048662718]
+position = Vector2(0, 12)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_v3ogq")
+
+[node name="MovementComponent" type="Node" parent="." unique_id=676077895]
+script = ExtResource("3_movimiento")
+textura_derecha = ExtResource("1_derecha")
+textura_izquierda = ExtResource("2_izquierda")
+
+[node name="InteractorComponent" type="Area2D" parent="." unique_id=544945970]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("4_interactor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractorComponent" unique_id=459877454]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_interactor")
+
+[node name="HidingComponent" type="Node" parent="."]
+script = ExtResource("5_hiding")

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"acta_umbral"
+texto = "ARCHIVO: acta_umbral.txt\n\nProyecto UMBRAL. Primera apertura registrada: 14 de septiembre de 1984.\n\nPruscino subrayó la fecha y escribió al margen: «El comienzo es la clave»."
