@@ -24,7 +24,7 @@ collide_with_bodies = false
 [node name="EntradaMouse" type="Node" parent="."]
 script = ExtResource("1_entrada")
 
-[node name="RotacionCamara" type="Node" parent="." node_paths=PackedStringArray("pivote", "camara", "entrada")]
+[node name="RotacionCamara" type="Node" parent="." groups=["rotacion_camara"] node_paths=PackedStringArray("pivote", "camara", "entrada")]
 script = ExtResource("2_rotacion")
 pivote = NodePath("../Pivote")
 camara = NodePath("../Pivote/Camara")
