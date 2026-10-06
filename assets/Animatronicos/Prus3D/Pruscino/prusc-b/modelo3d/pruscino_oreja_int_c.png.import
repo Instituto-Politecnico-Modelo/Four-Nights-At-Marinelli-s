@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c3witv18u5oso"
-path="res://.godot/imported/pruscino_oreja_int_c.png-49657b32ab1d65fa0afa19b08e3f48aa.ctex"
+path.s3tc="res://.godot/imported/pruscino_oreja_int_c.png-49657b32ab1d65fa0afa19b08e3f48aa.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "7bdbfd1c3801f4192463dfc91d59dc15"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://modelo3d/pruscino_oreja_int_c.png"
-dest_files=["res://.godot/imported/pruscino_oreja_int_c.png-49657b32ab1d65fa0afa19b08e3f48aa.ctex"]
+dest_files=["res://.godot/imported/pruscino_oreja_int_c.png-49657b32ab1d65fa0afa19b08e3f48aa.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

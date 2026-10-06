@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b75e8li7yieid"
-path="res://.godot/imported/pruscino_pelaje_c.png-1b82a3d25883d6013850588dd1b758df.ctex"
+path.s3tc="res://.godot/imported/pruscino_pelaje_c.png-1b82a3d25883d6013850588dd1b758df.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "3217b5781ea4a4d6cf253eb4b516b0d1"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://modelo3d/pruscino_pelaje_c.png"
-dest_files=["res://.godot/imported/pruscino_pelaje_c.png-1b82a3d25883d6013850588dd1b758df.ctex"]
+dest_files=["res://.godot/imported/pruscino_pelaje_c.png-1b82a3d25883d6013850588dd1b758df.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -40,4 +41,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
