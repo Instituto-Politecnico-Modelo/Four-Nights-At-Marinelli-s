@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://diiy8o0xfy0kn" path="res://scripts/componentes/componente_reloj_noche.gd" id="11_reloj_noche"]
 [ext_resource type="Script" uid="uid://dj8tfbl3haq6i" path="res://scripts/componentes/componente_mostrar_hora.gd" id="12_mostrar_hora"]
 [ext_resource type="PackedScene" path="res://escenas/animatronicos/pruscino_encuentro.tscn" id="13_encuentro_pruscino"]
+[ext_resource type="PackedScene" path="res://escenas/animatronicos/marifreddy_encuentro.tscn" id="14_encuentro_marifreddy"]
 
 [sub_resource type="Environment" id="entorno"]
 background_mode = 1
@@ -905,7 +906,7 @@ script = ExtResource("2_interactuable")
 [node name="Forma" type="CollisionShape3D" parent="PuertaOrientacion/AreaInteraccion" unique_id=1694742262]
 shape = SubResource("BoxShape3D_10")
 
-[node name="ComponenteBisagra" type="Node" parent="PuertaOrientacion" unique_id=1534873229 node_paths=PackedStringArray("interactuable", "bisagra")]
+[node name="ComponenteBisagra" type="Node" parent="PuertaOrientacion" unique_id=1534873229 groups=["puerta_orientacion"] node_paths=PackedStringArray("interactuable", "bisagra")]
 script = ExtResource("3_bisagra")
 interactuable = NodePath("../AreaInteraccion")
 bisagra = NodePath("../Bisagra")
@@ -1782,3 +1783,5 @@ reloj = NodePath("../../RelojNoche")
 etiqueta = NodePath("../Hora")
 
 [node name="EncuentroPruscino" parent="." unique_id=1700942146 instance=ExtResource("13_encuentro_pruscino")]
+
+[node name="EncuentroMariFreddy" parent="." instance=ExtResource("14_encuentro_marifreddy")]

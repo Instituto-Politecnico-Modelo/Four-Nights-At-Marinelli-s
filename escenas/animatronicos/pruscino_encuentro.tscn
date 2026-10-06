@@ -46,9 +46,10 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 0.5, 0, -2.3)
 script = ExtResource("7_interferencia")
 estados = NodePath("../Estados")
 
-[node name="Jumpscare" type="Node" parent="." node_paths=PackedStringArray("animatronico", "vigilancia", "punto", "sonido")]
+[node name="Jumpscare" type="Node" parent="." node_paths=PackedStringArray("animatronico", "punto", "sonido")]
 script = ExtResource("6_jumpscare")
 animatronico = NodePath("../Pruscino")
-vigilancia = NodePath("../VigilanciaVentana")
 punto = NodePath("../PuntoJumpscare")
 sonido = NodePath("../PuntoJumpscare/Sonido")
+
+[connection signal="jumpscare_solicitado" from="VigilanciaVentana" to="Jumpscare" method="activar"]
