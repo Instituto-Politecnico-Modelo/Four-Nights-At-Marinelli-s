@@ -19,15 +19,17 @@ ambient_light_source = 2
 ssil_enabled = true
 background_color = Color(0.01, 0.01, 0.012, 1)
 ambient_light_color = Color(0.45, 0.55, 0.6, 1)
-ambient_light_energy = 0.12
+ambient_light_energy = 0.05
 tonemap_mode = 3
-tonemap_exposure = 0.9
+tonemap_exposure = 0.65
 ssao_enabled = true
 ssao_radius = 0.8
 ssao_intensity = 2.2
 glow_enabled = true
-glow_intensity = 1.1
-glow_bloom = 0.08
+glow_intensity = 0.3
+glow_bloom = 0.0
+fog_enabled = false
+volumetric_fog_enabled = false
 adjustment_enabled = true
 adjustment_contrast = 1.15
 adjustment_saturation = 0.6
@@ -360,7 +362,7 @@ albedo_color = Color(0.1, 0.55, 0.25, 1)
 roughness = 0.5
 emission_enabled = true
 emission = Color(0.1, 1, 0.35, 1)
-emission_energy_multiplier = 1.5
+emission_energy_multiplier = 0.8
 
 [sub_resource type="BoxMesh" id="BoxMesh_73"]
 size = Vector3(2.6, 0.03, 0.7)
@@ -593,7 +595,7 @@ size = Vector3(1.2, 0.04, 0.12)
 roughness = 0.9
 emission_enabled = true
 emission = Color(0.85, 1, 0.92, 1)
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_128"]
 size = Vector3(0.12, 0.04, 1.2)
@@ -615,7 +617,7 @@ albedo_texture = ExtResource("8_bliss")
 roughness = 0.2
 emission_enabled = true
 emission_texture = ExtResource("8_bliss")
-emission_energy_multiplier = 0.9
+emission_energy_multiplier = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pantalla"]
 size = Vector3(0.56, 0.34, 0.1)
@@ -631,32 +633,22 @@ roughness = 0.5
 resource_local_to_scene = true
 emission_enabled = true
 emission = Color(0.85, 1, 0.92, 1)
-emission_energy_multiplier = 2.0
+emission_energy_multiplier = 1.0
 
 [sub_resource type="StandardMaterial3D" id="mat_tubo_oficina"]
 resource_local_to_scene = true
 emission_enabled = true
 emission = Color(1, 0.88, 0.7, 1)
-emission_energy_multiplier = 1.2
+emission_energy_multiplier = 0.6
 
 [sub_resource type="StandardMaterial3D" id="mat_luz_emergencia"]
 albedo_color = Color(0.3, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.08, 0.04, 1)
-emission_energy_multiplier = 3.0
+emission_energy_multiplier = 1.5
 
 [sub_resource type="BoxMesh" id="BoxMesh_luz_emergencia"]
 size = Vector3(0.35, 0.12, 0.08)
-
-[sub_resource type="StandardMaterial3D" id="mat_polvo"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0.9, 0.9, 0.85, 0.22)
-billboard_mode = 3
-
-[sub_resource type="QuadMesh" id="QuadMesh_polvo"]
-material = SubResource("mat_polvo")
-size = Vector2(0.004, 0.004)
 
 [sub_resource type="FastNoiseLite" id="ruido_mancha"]
 frequency = 0.012
@@ -674,34 +666,6 @@ color_ramp = SubResource("gradiente_mancha")
 
 [sub_resource type="ShaderMaterial" id="material_efecto_terror"]
 shader = ExtResource("10_efecto_terror")
-
-[sub_resource type="ParticleProcessMaterial" id="proceso_polvo_PolvoPasillo"]
-emission_shape = 3
-emission_box_extents = Vector3(1.6, 1.3, 5.5)
-direction = Vector3(0, 1, 0)
-spread = 180.0
-initial_velocity_min = 0.01
-initial_velocity_max = 0.05
-gravity = Vector3(0, -0.004, 0)
-scale_min = 0.6
-scale_max = 1.6
-turbulence_enabled = true
-turbulence_noise_strength = 0.3
-turbulence_noise_scale = 4.0
-
-[sub_resource type="ParticleProcessMaterial" id="proceso_polvo_PolvoOficina"]
-emission_shape = 3
-emission_box_extents = Vector3(1.8, 1.2, 1.5)
-direction = Vector3(0, 1, 0)
-spread = 180.0
-initial_velocity_min = 0.01
-initial_velocity_max = 0.05
-gravity = Vector3(0, -0.004, 0)
-scale_min = 0.6
-scale_max = 1.6
-turbulence_enabled = true
-turbulence_noise_strength = 0.3
-turbulence_noise_scale = 4.0
 
 [sub_resource type="SystemFont" id="fuente_reloj"]
 font_names = PackedStringArray("OCR A Extended", "Consolas", "Courier New")
@@ -1523,7 +1487,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 2.55, -1.8)
 shadow_enabled = true
 omni_attenuation = 0.8
 light_color = Color(1, 0.86, 0.66, 1)
-light_energy = 0.3
+light_energy = 0.14
 omni_range = 5.0
 
 [node name="Iluminacion" type="Node3D" parent="." unique_id=836898097]
@@ -1553,7 +1517,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.55, -3)
 shadow_enabled = true
 omni_attenuation = 0.8
 light_color = Color(0.8, 0.95, 0.9, 1)
-light_energy = 1.1
+light_energy = 0.5
 omni_range = 6.0
 
 [node name="Tubo3" type="MeshInstance3D" parent="Iluminacion" unique_id=909249962]
@@ -1564,7 +1528,7 @@ surface_material_override/0 = SubResource("mat_tubo_apagado")
 [node name="Luz3" type="OmniLight3D" parent="Iluminacion" unique_id=21173672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.55, -7.5)
 light_color = Color(1, 0.97, 0.9, 1)
-light_energy = 1.3
+light_energy = 0.6
 shadow_enabled = true
 omni_range = 7.5
 omni_attenuation = 0.8
@@ -1580,7 +1544,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.55, 1.8)
 shadow_enabled = true
 omni_attenuation = 0.8
 light_color = Color(0.8, 0.95, 0.9, 1)
-light_energy = 0.7
+light_energy = 0.32
 omni_range = 6.0
 
 [node name="CamaraFoto" type="Camera3D" parent="." unique_id=873465182]
@@ -1666,47 +1630,29 @@ surface_material_override/0 = SubResource("mat_luz_emergencia")
 [node name="LuzEmergenciaBrillo" type="OmniLight3D" parent="Iluminacion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.3, -11.7)
 light_color = Color(1, 0.1, 0.05, 1)
-light_energy = 0.9
+light_energy = 0.4
 shadow_enabled = true
 omni_range = 5.0
 
 [node name="LuzSalida" type="OmniLight3D" parent="Iluminacion"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 0.1)
 light_color = Color(0.15, 1, 0.4, 1)
-light_energy = 0.35
+light_energy = 0.16
 omni_range = 2.5
 
 [node name="LuzMonitor1" type="OmniLight3D" parent="Oficina"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 1.1, -2.9)
 light_color = Color(0.55, 0.75, 1, 1)
-light_energy = 0.35
+light_energy = 0.16
 omni_range = 2.5
 
 [node name="LuzMonitor2" type="OmniLight3D" parent="Oficina"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 1.1, -2.95)
 light_color = Color(0.9, 0.92, 1, 1)
-light_energy = 0.25
+light_energy = 0.11
 omni_range = 2.0
 
 [node name="Ambiente" type="Node3D" parent="."]
-
-[node name="PolvoPasillo" type="GPUParticles3D" parent="Ambiente"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1.4, -3)
-amount = 180
-lifetime = 12.0
-preprocess = 12.0
-visibility_aabb = AABB(-6, -3, -7, 12, 6, 14)
-process_material = SubResource("proceso_polvo_PolvoPasillo")
-draw_pass_1 = SubResource("QuadMesh_polvo")
-
-[node name="PolvoOficina" type="GPUParticles3D" parent="Ambiente"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 1.3, -1.8)
-amount = 180
-lifetime = 12.0
-preprocess = 12.0
-visibility_aabb = AABB(-6, -3, -7, 12, 6, 14)
-process_material = SubResource("proceso_polvo_PolvoOficina")
-draw_pass_1 = SubResource("QuadMesh_polvo")
 
 [node name="ManchaPasillo1" type="Decal" parent="Ambiente"]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.02, 2.45, -3.9)
@@ -1823,7 +1769,7 @@ font_size = 64
 [node name="Brillo" type="OmniLight3D" parent="Oficina/RelojEscritorio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.08)
 light_color = Color(1, 0.1, 0.05, 1)
-light_energy = 0.15
+light_energy = 0.07
 omni_range = 0.4
 
 [node name="MostrarHora" type="Node" parent="Oficina/RelojEscritorio" node_paths=PackedStringArray("reloj", "etiqueta")]
