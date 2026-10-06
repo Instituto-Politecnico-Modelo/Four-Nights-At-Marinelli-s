@@ -26,6 +26,14 @@ func _process(delta: float) -> void:
 			noche_terminada.emit()
 
 
+func restaurar(hora_inicio: int) -> void:
+	hora = clampi(hora_inicio, 0, horas_totales)
+	tiempo = float(hora) * segundos_por_hora
+	if hora >= horas_totales:
+		terminada = true
+	hora_cambiada.emit(hora)
+
+
 func hora_reloj() -> int:
 	if hora == 0:
 		return 12

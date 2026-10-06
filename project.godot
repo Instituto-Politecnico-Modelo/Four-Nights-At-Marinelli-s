@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="4NochesConMarineli"
-run/main_scene="res://escenas/jugador/jugador.tscn"
+run/main_scene="res://escenas/menu/inicio.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Guardado="*res://scripts/guardado.gd"
 
 [physics]
 

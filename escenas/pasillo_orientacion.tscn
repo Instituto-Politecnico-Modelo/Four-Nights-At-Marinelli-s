@@ -12,6 +12,7 @@
 [ext_resource type="Shader" path="res://shaders/efecto_terror.gdshader" id="10_efecto_terror"]
 [ext_resource type="Script" path="res://scripts/componentes/componente_reloj_noche.gd" id="11_reloj_noche"]
 [ext_resource type="Script" path="res://scripts/componentes/componente_mostrar_hora.gd" id="12_mostrar_hora"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_checkpoint.gd" id="13_checkpoint"]
 
 [sub_resource type="Environment" id="entorno"]
 background_mode = 1
@@ -1831,3 +1832,9 @@ script = ExtResource("12_mostrar_hora")
 reloj = NodePath("../../../RelojNoche")
 etiqueta = NodePath("../Texto")
 digital = true
+
+[node name="Checkpoint" type="Node" parent="." node_paths=PackedStringArray("reloj", "etiqueta_noche")]
+script = ExtResource("13_checkpoint")
+reloj = NodePath("../RelojNoche")
+etiqueta_noche = NodePath("../HUDNoche/Noche")
+noche = 1
