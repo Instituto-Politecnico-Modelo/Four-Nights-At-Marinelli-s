@@ -21,7 +21,7 @@ func _ready() -> void:
 		lista.add_child(boton)
 
 	if puntos.size() > 0:
-		seleccionar(0)
+		seleccionar(0, false)
 
 
 func _process(_delta: float) -> void:
@@ -30,7 +30,9 @@ func _process(_delta: float) -> void:
 	aviso.visible = apagada
 
 
-func seleccionar(indice: int) -> void:
+func seleccionar(indice: int, con_sonido: bool = true) -> void:
 	var punto: Node3D = puntos[indice]
 	camara.global_transform = punto.global_transform
 	nombre.text = punto.name
+	if con_sonido:
+		Sonidos.camara()

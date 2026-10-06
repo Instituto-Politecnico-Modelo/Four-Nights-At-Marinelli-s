@@ -1,0 +1,57 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/menu/inicio.gd" id="1_inicio"]
+[ext_resource type="VideoStream" path="res://assets/Animatronicos/InicioFIn.ogv" id="2_video"]
+[ext_resource type="AudioStream" path="res://EfectosDeSonidos/SonidoInicio.mp3" id="3_sonido"]
+
+[node name="Inicio" type="Control" node_paths=PackedStringArray("video", "musica")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_inicio")
+video = NodePath("Video")
+musica = NodePath("Musica")
+
+[node name="Video" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_video")
+autoplay = true
+loop = true
+expand = true
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_sonido")
+autoplay = true
+
+[node name="BotonNuevoJuego" type="Button" parent="."]
+layout_mode = 1
+anchor_left = 0.0734
+anchor_top = 0.5194
+anchor_right = 0.293
+anchor_bottom = 0.6097
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+text = ""
+
+[node name="BotonContinuar" type="Button" parent="."]
+layout_mode = 1
+anchor_left = 0.0734
+anchor_top = 0.6111
+anchor_right = 0.293
+anchor_bottom = 0.7042
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+text = ""
+
+[connection signal="pressed" from="BotonNuevoJuego" to="." method="_on_boton_nuevo_juego"]
+[connection signal="pressed" from="BotonContinuar" to="." method="_on_boton_continuar"]
