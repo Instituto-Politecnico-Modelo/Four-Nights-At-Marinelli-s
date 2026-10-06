@@ -1,6 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="PackedScene" path="res://marifreddy.tscn" id="1_mf"]
+[ext_resource type="Script" path="res://scripts/prueba_marifreddy.gd" id="2_prueba"]
 
 [sub_resource type="Environment" id="Environment_mf"]
 background_mode = 1
@@ -11,6 +12,7 @@ ambient_light_energy = 0.5
 tonemap_mode = 3
 
 [node name="Prueba" type="Node3D"]
+script = ExtResource("2_prueba")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mf")
