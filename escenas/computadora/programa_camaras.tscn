@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="material_cctv"]
 shader = ExtResource("2_shader")
 
-[node name="ProgramaCamaras" type="Control" node_paths=PackedStringArray("camara", "lista", "nombre")]
+[node name="ProgramaCamaras" type="Control" node_paths=PackedStringArray("camara", "lista", "nombre", "vista", "aviso")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +18,8 @@ script = ExtResource("1_camaras")
 camara = NodePath("Vista/SubViewport/Camara")
 lista = NodePath("Panel/Lista")
 nombre = NodePath("Nombre")
+vista = NodePath("Vista")
+aviso = NodePath("Aviso")
 
 [node name="Fondo" type="ColorRect" parent="."]
 layout_mode = 1
@@ -47,6 +49,21 @@ render_target_update_mode = 4
 [node name="Camara" type="Camera3D" parent="Vista/SubViewport"]
 current = true
 fov = 72.0
+
+[node name="Aviso" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 22
+text = "SIN SEÑAL"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Nombre" type="Label" parent="."]
 layout_mode = 0

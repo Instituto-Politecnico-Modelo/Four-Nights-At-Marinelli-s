@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://7ja26d4tq0bi"]
 
 [ext_resource type="PackedScene" path="res://escenas/jugador/jugador.tscn" id="1_jugador"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_interactuable.gd" id="2_interactuable"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_bisagra.gd" id="3_bisagra"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_persiana.gd" id="4_persiana"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_seguir_rotacion.gd" id="5_seguir_rotacion"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_computadora.gd" id="6_computadora"]
+[ext_resource type="Script" uid="uid://edivjye1v1v8" path="res://scripts/componentes/componente_interactuable.gd" id="2_interactuable"]
+[ext_resource type="Script" uid="uid://cte31mugwarwi" path="res://scripts/componentes/componente_bisagra.gd" id="3_bisagra"]
+[ext_resource type="Script" uid="uid://d11qil1ryeo4g" path="res://scripts/componentes/componente_persiana.gd" id="4_persiana"]
+[ext_resource type="Script" uid="uid://cgrmjxhgrr63f" path="res://scripts/componentes/componente_seguir_rotacion.gd" id="5_seguir_rotacion"]
+[ext_resource type="Script" uid="uid://dtt6u5gijkvhc" path="res://scripts/componentes/componente_computadora.gd" id="6_computadora"]
 [ext_resource type="PackedScene" path="res://escenas/computadora/escritorio_xp.tscn" id="7_escritorio_xp"]
-[ext_resource type="Texture2D" path="res://assets/xp/bliss.svg" id="8_bliss"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_parpadeo_luz.gd" id="9_parpadeo_luz"]
-[ext_resource type="Shader" path="res://shaders/efecto_terror.gdshader" id="10_efecto_terror"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_reloj_noche.gd" id="11_reloj_noche"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_mostrar_hora.gd" id="12_mostrar_hora"]
+[ext_resource type="Texture2D" uid="uid://cfw54wk72k1cy" path="res://assets/xp/bliss.svg" id="8_bliss"]
+[ext_resource type="Script" uid="uid://b10w1l3d57o8i" path="res://scripts/componentes/componente_parpadeo_luz.gd" id="9_parpadeo_luz"]
+[ext_resource type="Shader" uid="uid://dpitx2ux8x0w4" path="res://shaders/efecto_terror.gdshader" id="10_efecto_terror"]
+[ext_resource type="Script" uid="uid://diiy8o0xfy0kn" path="res://scripts/componentes/componente_reloj_noche.gd" id="11_reloj_noche"]
+[ext_resource type="Script" uid="uid://dj8tfbl3haq6i" path="res://scripts/componentes/componente_mostrar_hora.gd" id="12_mostrar_hora"]
+[ext_resource type="PackedScene" path="res://escenas/animatronicos/pruscino_encuentro.tscn" id="13_encuentro_pruscino"]
 
 [sub_resource type="Environment" id="entorno"]
 background_mode = 1
-ambient_light_source = 2
-ssil_enabled = true
 background_color = Color(0.01, 0.01, 0.012, 1)
+ambient_light_source = 2
 ambient_light_color = Color(0.45, 0.55, 0.6, 1)
 ambient_light_energy = 0.05
 tonemap_mode = 3
@@ -25,11 +25,8 @@ tonemap_exposure = 0.65
 ssao_enabled = true
 ssao_radius = 0.8
 ssao_intensity = 2.2
+ssil_enabled = true
 glow_enabled = true
-glow_intensity = 0.3
-glow_bloom = 0.0
-fog_enabled = false
-volumetric_fog_enabled = false
 adjustment_enabled = true
 adjustment_contrast = 1.15
 adjustment_saturation = 0.6
@@ -399,15 +396,15 @@ size = Vector3(0.04, 0.2, 0.03)
 [sub_resource type="BoxMesh" id="BoxMesh_81"]
 size = Vector3(0.56, 0.34, 0.035)
 
-[sub_resource type="BoxMesh" id="BoxMesh_82"]
-size = Vector3(0.52, 0.3, 0.004)
+[sub_resource type="QuadMesh" id="QuadMesh_pantalla_xp"]
+size = Vector2(0.52, 0.3)
 
-[sub_resource type="StandardMaterial3D" id="mat_pantalla_escritorio"]
-albedo_color = Color(0.02, 0.05, 0.1, 1)
-roughness = 0.1
+[sub_resource type="StandardMaterial3D" id="mat_pantalla_xp"]
+albedo_texture = ExtResource("8_bliss")
+roughness = 0.2
 emission_enabled = true
-emission = Color(0.15, 0.4, 0.85, 1)
-emission_energy_multiplier = 1.2
+emission_energy_multiplier = 0.5
+emission_texture = ExtResource("8_bliss")
 
 [sub_resource type="BoxMesh" id="BoxMesh_83"]
 size = Vector3(0.44, 0.022, 0.14)
@@ -441,6 +438,9 @@ roughness = 0.9
 emission_enabled = true
 emission = Color(0.2, 1, 0.3, 1)
 emission_energy_multiplier = 4.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pantalla"]
+size = Vector3(0.56, 0.34, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_89"]
 size = Vector3(0.22, 0.015, 0.16)
@@ -591,85 +591,11 @@ size = Vector3(0.02, 0.02, 0.16)
 [sub_resource type="BoxMesh" id="BoxMesh_127"]
 size = Vector3(1.2, 0.04, 0.12)
 
-[sub_resource type="StandardMaterial3D" id="mat_tubo_fluorescente"]
-roughness = 0.9
-emission_enabled = true
-emission = Color(0.85, 1, 0.92, 1)
-emission_energy_multiplier = 1.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_128"]
-size = Vector3(0.12, 0.04, 1.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_129"]
-size = Vector3(0.12, 0.04, 1.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_130"]
-size = Vector3(0.12, 0.04, 1.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_131"]
-size = Vector3(1.2, 0.04, 0.12)
-
-[sub_resource type="QuadMesh" id="QuadMesh_pantalla_xp"]
-size = Vector2(0.52, 0.3)
-
-[sub_resource type="StandardMaterial3D" id="mat_pantalla_xp"]
-albedo_texture = ExtResource("8_bliss")
-roughness = 0.2
-emission_enabled = true
-emission_texture = ExtResource("8_bliss")
-emission_energy_multiplier = 0.5
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_pantalla"]
-size = Vector3(0.56, 0.34, 0.1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_camara_seguridad"]
-size = Vector3(0.1, 0.08, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="mat_tubo_apagado"]
-albedo_color = Color(0.55, 0.56, 0.54, 1)
-roughness = 0.5
-
-[sub_resource type="StandardMaterial3D" id="mat_tubo_parpadeante"]
-resource_local_to_scene = true
-emission_enabled = true
-emission = Color(0.85, 1, 0.92, 1)
-emission_energy_multiplier = 1.0
-
 [sub_resource type="StandardMaterial3D" id="mat_tubo_oficina"]
 resource_local_to_scene = true
 emission_enabled = true
 emission = Color(1, 0.88, 0.7, 1)
 emission_energy_multiplier = 0.6
-
-[sub_resource type="StandardMaterial3D" id="mat_luz_emergencia"]
-albedo_color = Color(0.3, 0, 0, 1)
-emission_enabled = true
-emission = Color(1, 0.08, 0.04, 1)
-emission_energy_multiplier = 1.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_luz_emergencia"]
-size = Vector3(0.35, 0.12, 0.08)
-
-[sub_resource type="FastNoiseLite" id="ruido_mancha"]
-frequency = 0.012
-fractal_octaves = 5
-
-[sub_resource type="Gradient" id="gradiente_mancha"]
-offsets = PackedFloat32Array(0, 0.5, 0.62, 0.78, 1)
-colors = PackedColorArray(0.2, 0.17, 0.1, 0, 0.2, 0.17, 0.1, 0, 0.24, 0.2, 0.1, 0.35, 0.12, 0.1, 0.05, 0.6, 0.08, 0.07, 0.04, 0.7)
-
-[sub_resource type="NoiseTexture2D" id="textura_mancha"]
-width = 256
-height = 256
-noise = SubResource("ruido_mancha")
-color_ramp = SubResource("gradiente_mancha")
-
-[sub_resource type="ShaderMaterial" id="material_efecto_terror"]
-shader = ExtResource("10_efecto_terror")
-
-[sub_resource type="SystemFont" id="fuente_reloj"]
-font_names = PackedStringArray("OCR A Extended", "Consolas", "Courier New")
-font_weight = 700
 
 [sub_resource type="BoxMesh" id="BoxMesh_reloj_cuerpo"]
 size = Vector3(0.17, 0.075, 0.07)
@@ -680,6 +606,67 @@ size = Vector3(0.14, 0.05, 0.004)
 [sub_resource type="StandardMaterial3D" id="mat_reloj_pantalla"]
 albedo_color = Color(0.03, 0.01, 0.01, 1)
 roughness = 0.15
+
+[sub_resource type="SystemFont" id="fuente_reloj"]
+font_names = PackedStringArray("OCR A Extended", "Consolas", "Courier New")
+font_weight = 700
+subpixel_positioning = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_128"]
+size = Vector3(0.12, 0.04, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="mat_tubo_apagado"]
+albedo_color = Color(0.55, 0.56, 0.54, 1)
+roughness = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_129"]
+size = Vector3(0.12, 0.04, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="mat_tubo_parpadeante"]
+resource_local_to_scene = true
+emission_enabled = true
+emission = Color(0.85, 1, 0.92, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_130"]
+size = Vector3(0.12, 0.04, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_131"]
+size = Vector3(1.2, 0.04, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="mat_tubo_fluorescente"]
+roughness = 0.9
+emission_enabled = true
+emission = Color(0.85, 1, 0.92, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_luz_emergencia"]
+size = Vector3(0.35, 0.12, 0.08)
+
+[sub_resource type="StandardMaterial3D" id="mat_luz_emergencia"]
+albedo_color = Color(0.3, 0, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.08, 0.04, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_camara_seguridad"]
+size = Vector3(0.1, 0.08, 0.2)
+
+[sub_resource type="Gradient" id="gradiente_mancha"]
+offsets = PackedFloat32Array(0, 0.5, 0.62, 0.78, 1)
+colors = PackedColorArray(0.2, 0.17, 0.1, 0, 0.2, 0.17, 0.1, 0, 0.24, 0.2, 0.1, 0.35, 0.12, 0.1, 0.05, 0.6, 0.08, 0.07, 0.04, 0.7)
+
+[sub_resource type="FastNoiseLite" id="ruido_mancha"]
+frequency = 0.012
+
+[sub_resource type="NoiseTexture2D" id="textura_mancha"]
+width = 256
+height = 256
+noise = SubResource("ruido_mancha")
+color_ramp = SubResource("gradiente_mancha")
+
+[sub_resource type="ShaderMaterial" id="material_efecto_terror"]
+shader = ExtResource("10_efecto_terror")
+shader_parameter/vineta = 0.85
+shader_parameter/grano = 0.05
 
 [node name="PasilloOrientacion" type="Node3D" unique_id=552760514]
 
@@ -694,10 +681,22 @@ use_collision = true
 size = Vector3(9.2, 0.1, 15.5)
 material = SubResource("mat_baldosas")
 
+[node name="Piso" type="CSGBox3D" parent="Estructura/Piso" unique_id=540831698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, -0.05, -0.25)
+use_collision = true
+size = Vector3(9.2, 0.1, 15.5)
+material = SubResource("mat_baldosas")
+
 [node name="Techo" type="CSGBox3D" parent="Estructura" unique_id=2123244623]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.85, -4.25)
 use_collision = true
 size = Vector3(9.2, 0.1, 15.5)
+material = SubResource("mat_techo")
+
+[node name="Techo" type="CSGBox3D" parent="Estructura/Techo" unique_id=2086501809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.297, 0.15, 2.982)
+use_collision = true
+size = Vector3(9.2, 0.37910157, 15.5)
 material = SubResource("mat_techo")
 
 [node name="ParedVentana" type="CSGCombiner3D" parent="Estructura" unique_id=2139737696]
@@ -767,6 +766,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.775, 0.61, -0.195)
 size = Vector3(4.45, 1.22, 0.166)
 material = SubResource("mat_pared_verde")
 
+[node name="ParedMatafuego" type="CSGCombiner3D" parent="Estructura/ParedMatafuego" unique_id=754026831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+use_collision = true
+
+[node name="Beige" type="CSGBox3D" parent="Estructura/ParedMatafuego/ParedMatafuego" unique_id=993141407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.297022, 2.01, -0.195)
+size = Vector3(7.494043, 1.58, 0.15)
+material = SubResource("mat_pared_beige")
+
+[node name="Verde" type="CSGBox3D" parent="Estructura/ParedMatafuego/ParedMatafuego" unique_id=392257301]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.3297367, 0.61, -0.195)
+size = Vector3(7.5594726, 1.22, 0.166)
+material = SubResource("mat_pared_verde")
+
 [node name="InteriorFondo" type="CSGCombiner3D" parent="Estructura" unique_id=1222938253]
 use_collision = true
 
@@ -800,8 +813,8 @@ material = SubResource("mat_pared_verde")
 use_collision = true
 
 [node name="Beige" type="CSGBox3D" parent="Estructura/PasilloParedSur" unique_id=1946487563]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.01, 3.575)
-size = Vector3(9.2, 1.58, 0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0266595, 2.01, 3.575)
+size = Vector3(16.45332, 1.58, 0.15)
 material = SubResource("mat_pared_beige")
 
 [node name="Verde" type="CSGBox3D" parent="Estructura/PasilloParedSur" unique_id=444588964]
@@ -823,6 +836,7 @@ size = Vector3(3.2, 1.22, 0.166)
 material = SubResource("mat_pared_verde")
 
 [node name="PasilloParedEste" type="CSGCombiner3D" parent="Estructura" unique_id=240171192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
 use_collision = true
 
 [node name="Beige" type="CSGBox3D" parent="Estructura/PasilloParedEste" unique_id=1550221503]
@@ -1058,7 +1072,7 @@ script = ExtResource("2_interactuable")
 [node name="Forma" type="CollisionShape3D" parent="Ventana/AreaInteraccion" unique_id=1161899722]
 shape = SubResource("BoxShape3D_43")
 
-[node name="ComponentePersiana" type="Node" parent="Ventana" unique_id=1129176778 node_paths=PackedStringArray("interactuable", "tela")]
+[node name="ComponentePersiana" type="Node" parent="Ventana" unique_id=1129176778 groups=["persiana_ventana"] node_paths=PackedStringArray("interactuable", "tela")]
 script = ExtResource("4_persiana")
 interactuable = NodePath("../AreaInteraccion")
 tela = NodePath("../Persiana/Tela")
@@ -1276,6 +1290,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.38, 0.245)
 mesh = SubResource("BoxMesh_88")
 surface_material_override/0 = SubResource("mat_led_verde")
 
+[node name="AreaPantalla" type="Area3D" parent="Oficina/Computadora1" unique_id=1162173310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, -0.05)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_interactuable")
+
+[node name="Forma" type="CollisionShape3D" parent="Oficina/Computadora1/AreaPantalla" unique_id=1550383947]
+shape = SubResource("BoxShape3D_pantalla")
+
+[node name="ComponenteComputadora" type="Node" parent="Oficina/Computadora1" unique_id=2004481297 node_paths=PackedStringArray("interactuable", "escritorio", "jugador")]
+script = ExtResource("6_computadora")
+interactuable = NodePath("../AreaPantalla")
+escritorio = NodePath("../../../PantallaComputadora/EscritorioXP")
+jugador = NodePath("../../../Jugador")
+
 [node name="Computadora2" type="Node3D" parent="Oficina" unique_id=850411949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 0.75, -3.2)
 
@@ -1484,11 +1513,64 @@ surface_material_override/0 = SubResource("mat_tubo_oficina")
 
 [node name="LuzOficina" type="OmniLight3D" parent="Oficina" unique_id=374429299]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 2.55, -1.8)
-shadow_enabled = true
-omni_attenuation = 0.8
 light_color = Color(1, 0.86, 0.66, 1)
 light_energy = 0.14
-omni_range = 5.0
+shadow_enabled = true
+omni_attenuation = 0.8
+
+[node name="ParpadeoOficina" type="Node" parent="Oficina" unique_id=334508608 node_paths=PackedStringArray("luz")]
+script = ExtResource("9_parpadeo_luz")
+luz = NodePath("../LuzOficina")
+material_tubo = SubResource("mat_tubo_oficina")
+probabilidad_apagado = 0.04
+intervalo_minimo = 0.05
+intervalo_maximo = 2.5
+
+[node name="LuzMonitor1" type="OmniLight3D" parent="Oficina" unique_id=1626005215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 1.1, -2.9)
+light_color = Color(0.55, 0.75, 1, 1)
+light_energy = 0.16
+omni_range = 2.5
+
+[node name="LuzMonitor2" type="OmniLight3D" parent="Oficina" unique_id=70379271]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 1.1, -2.95)
+light_color = Color(0.9, 0.92, 1, 1)
+light_energy = 0.11
+omni_range = 2.0
+
+[node name="RelojEscritorio" type="Node3D" parent="Oficina" unique_id=754212139]
+transform = Transform3D(0.88295, 0, 0.46947, 0, 1, 0, -0.46947, 0, 0.88295, 1.1, 0.75, -3.22)
+
+[node name="Cuerpo" type="MeshInstance3D" parent="Oficina/RelojEscritorio" unique_id=1172737532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
+mesh = SubResource("BoxMesh_reloj_cuerpo")
+surface_material_override/0 = SubResource("mat_plastico_negro")
+
+[node name="Pantalla" type="MeshInstance3D" parent="Oficina/RelojEscritorio" unique_id=136913147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.036)
+mesh = SubResource("BoxMesh_reloj_pantalla")
+surface_material_override/0 = SubResource("mat_reloj_pantalla")
+
+[node name="Texto" type="Label3D" parent="Oficina/RelojEscritorio" unique_id=572726073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.0385)
+pixel_size = 0.0006
+modulate = Color(1, 0.12, 0.06, 1)
+text = "12:00"
+font = SubResource("fuente_reloj")
+font_size = 64
+outline_size = 0
+
+[node name="Brillo" type="OmniLight3D" parent="Oficina/RelojEscritorio" unique_id=1942780912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.08)
+light_color = Color(1, 0.1, 0.05, 1)
+light_energy = 0.07
+omni_range = 0.4
+
+[node name="MostrarHora" type="Node" parent="Oficina/RelojEscritorio" unique_id=360214456 node_paths=PackedStringArray("reloj", "etiqueta")]
+script = ExtResource("12_mostrar_hora")
+reloj = NodePath("../../../RelojNoche")
+etiqueta = NodePath("../Texto")
+digital = true
 
 [node name="Iluminacion" type="Node3D" parent="." unique_id=836898097]
 
@@ -1514,11 +1596,11 @@ surface_material_override/0 = SubResource("mat_tubo_parpadeante")
 
 [node name="Luz2" type="OmniLight3D" parent="Iluminacion" unique_id=642746544]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.55, -3)
-shadow_enabled = true
-omni_attenuation = 0.8
 light_color = Color(0.8, 0.95, 0.9, 1)
 light_energy = 0.5
+shadow_enabled = true
 omni_range = 6.0
+omni_attenuation = 0.8
 
 [node name="Tubo3" type="MeshInstance3D" parent="Iluminacion" unique_id=909249962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.78, -7.5)
@@ -1527,12 +1609,12 @@ surface_material_override/0 = SubResource("mat_tubo_apagado")
 
 [node name="Luz3" type="OmniLight3D" parent="Iluminacion" unique_id=21173672]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.55, -7.5)
+visible = false
 light_color = Color(1, 0.97, 0.9, 1)
 light_energy = 0.6
 shadow_enabled = true
 omni_range = 7.5
 omni_attenuation = 0.8
-visible = false
 
 [node name="Tubo4" type="MeshInstance3D" parent="Iluminacion" unique_id=1981406535]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.78, 1.8)
@@ -1541,11 +1623,33 @@ surface_material_override/0 = SubResource("mat_tubo_fluorescente")
 
 [node name="Luz4" type="OmniLight3D" parent="Iluminacion" unique_id=1331861503]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.55, 1.8)
-shadow_enabled = true
-omni_attenuation = 0.8
 light_color = Color(0.8, 0.95, 0.9, 1)
 light_energy = 0.32
+shadow_enabled = true
 omni_range = 6.0
+omni_attenuation = 0.8
+
+[node name="ParpadeoLuz2" type="Node" parent="Iluminacion" unique_id=1202234346 node_paths=PackedStringArray("luz")]
+script = ExtResource("9_parpadeo_luz")
+luz = NodePath("../Luz2")
+material_tubo = SubResource("mat_tubo_parpadeante")
+
+[node name="LuzEmergencia" type="MeshInstance3D" parent="Iluminacion" unique_id=1567279267]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.4, -11.96)
+mesh = SubResource("BoxMesh_luz_emergencia")
+surface_material_override/0 = SubResource("mat_luz_emergencia")
+
+[node name="LuzEmergenciaBrillo" type="OmniLight3D" parent="Iluminacion" unique_id=373767979]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.3, -11.7)
+light_color = Color(1, 0.1, 0.05, 1)
+light_energy = 0.4
+shadow_enabled = true
+
+[node name="LuzSalida" type="OmniLight3D" parent="Iluminacion" unique_id=2143014471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 0.1)
+light_color = Color(0.15, 1, 0.4, 1)
+light_energy = 0.16
+omni_range = 2.5
 
 [node name="CamaraFoto" type="Camera3D" parent="." unique_id=873465182]
 transform = Transform3D(0.77841, 0.047155, -0.62598, 0, 0.99717, 0.075117, 0.62775, -0.058472, 0.77621, -1.9, 1.45, 2.2)
@@ -1554,142 +1658,77 @@ fov = 68.0
 [node name="Jugador" parent="." unique_id=1444613225 instance=ExtResource("1_jugador")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, -2.3)
 
-[node name="AreaPantalla" type="Area3D" parent="Oficina/Computadora1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, -0.05)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("2_interactuable")
+[node name="CamarasSeguridad" type="Node3D" parent="." unique_id=1792880611]
 
-[node name="Forma" type="CollisionShape3D" parent="Oficina/Computadora1/AreaPantalla"]
-shape = SubResource("BoxShape3D_pantalla")
-
-[node name="ComponenteComputadora" type="Node" parent="Oficina/Computadora1" node_paths=PackedStringArray("interactuable", "escritorio", "jugador")]
-script = ExtResource("6_computadora")
-interactuable = NodePath("../AreaPantalla")
-escritorio = NodePath("../../../PantallaComputadora/EscritorioXP")
-jugador = NodePath("../../../Jugador")
-
-[node name="CamarasSeguridad" type="Node3D" parent="."]
-
-[node name="CAM 1 - Orientación" type="Marker3D" parent="CamarasSeguridad" groups=["camaras_seguridad"]]
-transform = Transform3D(0.7599, 0.18276, -0.62382, -0, 0.95966, 0.28116, 0.65004, -0.21365, 0.72925, -2.95, 2.6, 3.25)
-
-[node name="Modelo1" type="MeshInstance3D" parent="CamarasSeguridad"]
-transform = Transform3D(0.7599, 0.18276, -0.62382, -0, 0.95966, 0.28116, 0.65004, -0.21365, 0.72925, -3.0249, 2.6337, 3.3375)
+[node name="Modelo1" type="MeshInstance3D" parent="CamarasSeguridad" unique_id=679597557]
+transform = Transform3D(0.7599, 0.18276, -0.62382, 0, 0.95966, 0.28116, 0.65004, -0.21365, 0.72925, -3.0249, 2.6337, 3.3375)
 mesh = SubResource("BoxMesh_camara_seguridad")
 surface_material_override/0 = SubResource("mat_plastico_gris")
 
-[node name="CAM 2 - Pasillo oeste" type="Marker3D" parent="CamarasSeguridad" groups=["camaras_seguridad"]]
+[node name="CAM 1 - Pasillo oeste" type="Marker3D" parent="CamarasSeguridad" unique_id=942357211 groups=["camaras_seguridad"]]
 transform = Transform3D(-0.96578, 0.050544, -0.25441, 0, 0.98083, 0.19487, 0.25938, 0.1882, -0.94726, -2.95, 2.6, -11.75)
 
-[node name="Modelo2" type="MeshInstance3D" parent="CamarasSeguridad"]
+[node name="Modelo2" type="MeshInstance3D" parent="CamarasSeguridad" unique_id=1549856237]
 transform = Transform3D(-0.96578, 0.050544, -0.25441, 0, 0.98083, 0.19487, 0.25938, 0.1882, -0.94726, -2.9805, 2.6234, -11.864)
 mesh = SubResource("BoxMesh_camara_seguridad")
 surface_material_override/0 = SubResource("mat_plastico_gris")
 
-[node name="CAM 3 - Pasillo este" type="Marker3D" parent="CamarasSeguridad" groups=["camaras_seguridad"]]
+[node name="CAM 2 - Pasillo este" type="Marker3D" parent="CamarasSeguridad" unique_id=1255007318 groups=["camaras_seguridad"]]
 transform = Transform3D(0.57021, -0.25645, 0.78044, 0, 0.95002, 0.31218, -0.8215, -0.17801, 0.54172, 5.75, 2.6, 3.25)
 
-[node name="Modelo3" type="MeshInstance3D" parent="CamarasSeguridad"]
+[node name="Modelo3" type="MeshInstance3D" parent="CamarasSeguridad" unique_id=332069262]
 transform = Transform3D(0.57021, -0.25645, 0.78044, 0, 0.95002, 0.31218, -0.8215, -0.17801, 0.54172, 5.8437, 2.6375, 3.315)
 mesh = SubResource("BoxMesh_camara_seguridad")
 surface_material_override/0 = SubResource("mat_plastico_gris")
 
-[node name="CAM 4 - Oficina" type="Marker3D" parent="CamarasSeguridad" groups=["camaras_seguridad"]]
-transform = Transform3D(0.66349, -0.33897, 0.667, 0, 0.89148, 0.45305, -0.74819, -0.3006, 0.59149, 3.85, 2.6, -0.45)
-
-[node name="Modelo4" type="MeshInstance3D" parent="CamarasSeguridad"]
+[node name="Modelo4" type="MeshInstance3D" parent="CamarasSeguridad" unique_id=1993058810]
 transform = Transform3D(0.66349, -0.33897, 0.667, 0, 0.89148, 0.45305, -0.74819, -0.3006, 0.59149, 3.93, 2.6544, -0.37902)
 mesh = SubResource("BoxMesh_camara_seguridad")
 surface_material_override/0 = SubResource("mat_plastico_gris")
 
-[node name="PantallaComputadora" type="CanvasLayer" parent="."]
+[node name="PantallaComputadora" type="CanvasLayer" parent="." unique_id=1952158805]
 layer = 10
 
-[node name="EscritorioXP" parent="PantallaComputadora" instance=ExtResource("7_escritorio_xp")]
+[node name="EscritorioXP" parent="PantallaComputadora" unique_id=1793445146 instance=ExtResource("7_escritorio_xp")]
 visible = false
 
-[node name="ParpadeoLuz2" type="Node" parent="Iluminacion" node_paths=PackedStringArray("luz")]
-script = ExtResource("9_parpadeo_luz")
-luz = NodePath("../Luz2")
-material_tubo = SubResource("mat_tubo_parpadeante")
+[node name="Ambiente" type="Node3D" parent="." unique_id=485559631]
 
-[node name="ParpadeoOficina" type="Node" parent="Oficina" node_paths=PackedStringArray("luz")]
-script = ExtResource("9_parpadeo_luz")
-luz = NodePath("../LuzOficina")
-material_tubo = SubResource("mat_tubo_oficina")
-probabilidad_apagado = 0.04
-intervalo_minimo = 0.05
-intervalo_maximo = 2.5
-
-[node name="LuzEmergencia" type="MeshInstance3D" parent="Iluminacion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.4, -11.96)
-mesh = SubResource("BoxMesh_luz_emergencia")
-surface_material_override/0 = SubResource("mat_luz_emergencia")
-
-[node name="LuzEmergenciaBrillo" type="OmniLight3D" parent="Iluminacion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2.3, -11.7)
-light_color = Color(1, 0.1, 0.05, 1)
-light_energy = 0.4
-shadow_enabled = true
-omni_range = 5.0
-
-[node name="LuzSalida" type="OmniLight3D" parent="Iluminacion"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.5, 0.1)
-light_color = Color(0.15, 1, 0.4, 1)
-light_energy = 0.16
-omni_range = 2.5
-
-[node name="LuzMonitor1" type="OmniLight3D" parent="Oficina"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55, 1.1, -2.9)
-light_color = Color(0.55, 0.75, 1, 1)
-light_energy = 0.16
-omni_range = 2.5
-
-[node name="LuzMonitor2" type="OmniLight3D" parent="Oficina"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.85, 1.1, -2.95)
-light_color = Color(0.9, 0.92, 1, 1)
-light_energy = 0.11
-omni_range = 2.0
-
-[node name="Ambiente" type="Node3D" parent="."]
-
-[node name="ManchaPasillo1" type="Decal" parent="Ambiente"]
+[node name="ManchaPasillo1" type="Decal" parent="Ambiente" unique_id=1097840670]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.02, 2.45, -3.9)
 size = Vector3(0.8, 0.2, 1.4)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="ManchaPasillo2" type="Decal" parent="Ambiente"]
+[node name="ManchaPasillo2" type="Decal" parent="Ambiente" unique_id=1998330917]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, -0.02, 0.3, -6.6)
 size = Vector3(0.6, 0.2, 1.2)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="ManchaPasillo3" type="Decal" parent="Ambiente"]
+[node name="ManchaPasillo3" type="Decal" parent="Ambiente" unique_id=1609534021]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 5.98, 2.45, 1.4)
 size = Vector3(0.9, 0.2, 1.6)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="ManchaTechoPasillo" type="Decal" parent="Ambiente"]
+[node name="ManchaTechoPasillo" type="Decal" parent="Ambiente" unique_id=1489750827]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, -1.1, 2.79, -1.2)
-size = Vector3(1.2, 0.2, 1.0)
+size = Vector3(1.2, 0.2, 1)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="ManchaTechoOficina" type="Decal" parent="Ambiente"]
+[node name="ManchaTechoOficina" type="Decal" parent="Ambiente" unique_id=2068749558]
 transform = Transform3D(1, 0, 0, 0, -1, 0, 0, 0, -1, 2.9, 2.79, -2.7)
-size = Vector3(1.0, 0.2, 0.8)
+size = Vector3(1, 0.2, 0.8)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="ManchaOficina" type="Decal" parent="Ambiente"]
+[node name="ManchaOficina" type="Decal" parent="Ambiente" unique_id=285597282]
 transform = Transform3D(0, -1, 0, 1, 0, 0, 0, 0, 1, 3.99, 2.3, -2.2)
-size = Vector3(1.0, 0.2, 1.3)
+size = Vector3(1, 0.2, 1.3)
 texture_albedo = SubResource("textura_mancha")
 
-[node name="EfectoPantalla" type="CanvasLayer" parent="."]
+[node name="EfectoPantalla" type="CanvasLayer" parent="." unique_id=1326819948]
 layer = -1
 
-[node name="Vineta" type="ColorRect" parent="EfectoPantalla"]
+[node name="Vineta" type="ColorRect" parent="EfectoPantalla" unique_id=587039800]
 material = SubResource("material_efecto_terror")
-layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1697,14 +1736,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="RelojNoche" type="Node" parent="." groups=["reloj_noche"]]
+[node name="RelojNoche" type="Node" parent="." unique_id=946488636 groups=["reloj_noche"]]
 script = ExtResource("11_reloj_noche")
 
-[node name="HUDNoche" type="CanvasLayer" parent="."]
+[node name="HUDNoche" type="CanvasLayer" parent="." unique_id=1082517639]
 layer = 2
 
-[node name="Hora" type="Label" parent="HUDNoche"]
-layout_mode = 3
+[node name="Hora" type="Label" parent="HUDNoche" unique_id=189990162]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1721,8 +1759,7 @@ theme_override_font_sizes/font_size = 44
 text = "12 AM"
 horizontal_alignment = 2
 
-[node name="Noche" type="Label" parent="HUDNoche"]
-layout_mode = 3
+[node name="Noche" type="Label" parent="HUDNoche" unique_id=108930978]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1739,41 +1776,9 @@ theme_override_font_sizes/font_size = 22
 text = "Noche 1"
 horizontal_alignment = 2
 
-[node name="MostrarHora" type="Node" parent="HUDNoche" node_paths=PackedStringArray("reloj", "etiqueta")]
+[node name="MostrarHora" type="Node" parent="HUDNoche" unique_id=1811727858 node_paths=PackedStringArray("reloj", "etiqueta")]
 script = ExtResource("12_mostrar_hora")
 reloj = NodePath("../../RelojNoche")
 etiqueta = NodePath("../Hora")
 
-[node name="RelojEscritorio" type="Node3D" parent="Oficina"]
-transform = Transform3D(0.88295, 0, 0.46947, 0, 1, 0, -0.46947, 0, 0.88295, 1.1, 0.75, -3.22)
-
-[node name="Cuerpo" type="MeshInstance3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
-mesh = SubResource("BoxMesh_reloj_cuerpo")
-surface_material_override/0 = SubResource("mat_plastico_negro")
-
-[node name="Pantalla" type="MeshInstance3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.036)
-mesh = SubResource("BoxMesh_reloj_pantalla")
-surface_material_override/0 = SubResource("mat_reloj_pantalla")
-
-[node name="Texto" type="Label3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.0385)
-pixel_size = 0.0006
-modulate = Color(1, 0.12, 0.06, 1)
-outline_size = 0
-text = "12:00"
-font = SubResource("fuente_reloj")
-font_size = 64
-
-[node name="Brillo" type="OmniLight3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.08)
-light_color = Color(1, 0.1, 0.05, 1)
-light_energy = 0.07
-omni_range = 0.4
-
-[node name="MostrarHora" type="Node" parent="Oficina/RelojEscritorio" node_paths=PackedStringArray("reloj", "etiqueta")]
-script = ExtResource("12_mostrar_hora")
-reloj = NodePath("../../../RelojNoche")
-etiqueta = NodePath("../Texto")
-digital = true
+[node name="EncuentroPruscino" parent="." unique_id=1700942146 instance=ExtResource("13_encuentro_pruscino")]
