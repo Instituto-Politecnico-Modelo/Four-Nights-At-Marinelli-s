@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ccomym0yfrtir"
-path="res://.godot/imported/pruscino.glb-cd5e7d3857546eba5a44061dfc8f4eea.scn"
+path="res://.godot/imported/pruscino.glb-d81b94e97b1f756d69a1ad94ffee2afe.scn"
 
 [deps]
 
-source_file="res://assets/Animatronicos/PrusBonnie/Pruscino/modelo3d/pruscino.glb"
-dest_files=["res://.godot/imported/pruscino.glb-cd5e7d3857546eba5a44061dfc8f4eea.scn"]
+source_file="res://assets/Animatronicos/Prus3D/Pruscino/modelo3d/pruscino.glb"
+dest_files=["res://.godot/imported/pruscino.glb-d81b94e97b1f756d69a1ad94ffee2afe.scn"]
 
 [params]
 
@@ -42,4 +42,4 @@ materials/extract_path=""
 _subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
-gltf/texture_map_mode=0
+gltf/texture_map_mode=1
