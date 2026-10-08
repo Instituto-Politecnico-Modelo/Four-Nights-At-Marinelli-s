@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PistaResource" format=3]
+
+[ext_resource type="Script" uid="uid://bdtlbjull66ig" path="res://resources/nivel1/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"borrador"
+texto = "ARCHIVO: mensaje_sin_enviar.txt\n\n«Barbieri, dejé mis recordatorios repartidos entre las máquinas. Nadie va a entenderlos leyendo uno solo».\n\nEl mensaje termina ahí."

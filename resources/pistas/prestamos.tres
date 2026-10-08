@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
-[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
-[resource]
-script = ExtResource("1")
-id = &"prestamos"
-texto = "ARCHIVO: prestamos.txt\n\nLinterna prestada a Pruscino. Devolución pendiente.\n\nObservación: volvió cubierta de tierra, pero el profesor se la llevó otra vez."

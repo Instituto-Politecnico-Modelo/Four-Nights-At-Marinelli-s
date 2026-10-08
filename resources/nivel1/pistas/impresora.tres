@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PistaResource" format=3]
+
+[ext_resource type="Script" uid="uid://bdtlbjull66ig" path="res://resources/nivel1/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"impresora"
+texto = "ARCHIVO: cola_impresion.txt\n\nTrabajo cancelado: plano_subsuelo.\n\nLa impresora no llegó a sacar ninguna hoja. El documento original ya no está en esta computadora."

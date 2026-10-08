@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
-[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
-[resource]
-script = ExtResource("1")
-id = &"apagado"
-texto = "ARCHIVO: cierre_laboratorio.txt\n\nApagar los monitores al terminar. No desconectar la laptop de la mesa marrón: el profesor dejó una transferencia en curso."

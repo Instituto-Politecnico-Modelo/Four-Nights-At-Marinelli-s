@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PistaResource" format=3]
+
+[ext_resource type="Script" uid="uid://bdtlbjull66ig" path="res://resources/nivel1/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"red"
+texto = "ARCHIVO: red_local.txt\n\nInternet está desconectado. Los archivos del laboratorio siguen disponibles localmente. No confundir una falla de conexión con un archivo borrado."

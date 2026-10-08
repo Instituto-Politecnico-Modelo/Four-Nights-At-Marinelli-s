@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
-[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
-[resource]
-script = ExtResource("1")
-id = &"respaldo"
-texto = "ARCHIVO: respaldo.txt\n\nLos documentos personales del profesor se trasladaron a su laptop, sobre la mesa marrón. Acá solo quedaron notas y copias de trabajo."

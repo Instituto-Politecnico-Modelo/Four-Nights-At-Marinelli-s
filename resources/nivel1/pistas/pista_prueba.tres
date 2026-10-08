@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="PistaResource" format=3]
+
+[ext_resource type="Script" uid="uid://bdtlbjull66ig" path="res://resources/nivel1/pista_resource.gd" id="1_script"]
+
+[resource]
+script = ExtResource("1_script")
+id = &"prueba"
+texto = "Esta es una pista de prueba. El contenido real del acertijo se define en un commit posterior."

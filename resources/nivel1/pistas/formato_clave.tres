@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PistaResource" format=3]
+
+[ext_resource type="Script" uid="uid://bdtlbjull66ig" path="res://resources/nivel1/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"formato_clave"
+texto = "ARCHIVO: formato_umbral.txt\n\nLas claves UMBRAL se escriben con CUATRO cifras: primero el día, después el mes.\n\nDos cifras para cada parte, con cero delante si hace falta. Sin barras, espacios ni letras."
