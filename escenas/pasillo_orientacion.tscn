@@ -7,14 +7,14 @@
 [ext_resource type="Script" uid="uid://cgrmjxhgrr63f" path="res://scripts/componentes/componente_seguir_rotacion.gd" id="5_seguir_rotacion"]
 [ext_resource type="Script" uid="uid://dtt6u5gijkvhc" path="res://scripts/componentes/componente_computadora.gd" id="6_computadora"]
 [ext_resource type="PackedScene" path="res://escenas/computadora/escritorio_xp.tscn" id="7_escritorio_xp"]
-[ext_resource type="Script" path="res://scripts/componentes/componente_checkpoint.gd" id="13_checkpoint"]
 [ext_resource type="Texture2D" uid="uid://cfw54wk72k1cy" path="res://assets/xp/bliss.svg" id="8_bliss"]
 [ext_resource type="Script" uid="uid://b10w1l3d57o8i" path="res://scripts/componentes/componente_parpadeo_luz.gd" id="9_parpadeo_luz"]
 [ext_resource type="Shader" uid="uid://dpitx2ux8x0w4" path="res://shaders/efecto_terror.gdshader" id="10_efecto_terror"]
 [ext_resource type="Script" uid="uid://diiy8o0xfy0kn" path="res://scripts/componentes/componente_reloj_noche.gd" id="11_reloj_noche"]
 [ext_resource type="Script" uid="uid://dj8tfbl3haq6i" path="res://scripts/componentes/componente_mostrar_hora.gd" id="12_mostrar_hora"]
+[ext_resource type="Script" uid="uid://rndqu4k5h3ao" path="res://scripts/componentes/componente_checkpoint.gd" id="13_checkpoint"]
 [ext_resource type="PackedScene" path="res://escenas/animatronicos/pruscino_encuentro.tscn" id="14_encuentro_pruscino"]
-[ext_resource type="PackedScene" path="res://escenas/animatronicos/marifreddy_encuentro.tscn" id="15_encuentro_marifreddy"]
+[ext_resource type="PackedScene" uid="uid://bexvguh8gctbe" path="res://escenas/animatronicos/marifreddy_encuentro.tscn" id="15_encuentro_marifreddy"]
 
 [sub_resource type="Environment" id="entorno"]
 background_mode = 1
@@ -907,7 +907,7 @@ script = ExtResource("2_interactuable")
 [node name="Forma" type="CollisionShape3D" parent="PuertaOrientacion/AreaInteraccion" unique_id=1694742262]
 shape = SubResource("BoxShape3D_10")
 
-[node name="ComponenteBisagra" type="Node" parent="PuertaOrientacion" unique_id=1534873229 groups=["puerta_orientacion"] node_paths=PackedStringArray("interactuable", "bisagra")]
+[node name="ComponenteBisagra" type="Node" parent="PuertaOrientacion" unique_id=1534873229 node_paths=PackedStringArray("interactuable", "bisagra") groups=["puerta_orientacion"]]
 script = ExtResource("3_bisagra")
 interactuable = NodePath("../AreaInteraccion")
 bisagra = NodePath("../Bisagra")
@@ -1074,7 +1074,7 @@ script = ExtResource("2_interactuable")
 [node name="Forma" type="CollisionShape3D" parent="Ventana/AreaInteraccion" unique_id=1161899722]
 shape = SubResource("BoxShape3D_43")
 
-[node name="ComponentePersiana" type="Node" parent="Ventana" unique_id=1129176778 groups=["persiana_ventana"] node_paths=PackedStringArray("interactuable", "tela")]
+[node name="ComponentePersiana" type="Node" parent="Ventana" unique_id=1129176778 node_paths=PackedStringArray("interactuable", "tela") groups=["persiana_ventana"]]
 script = ExtResource("4_persiana")
 interactuable = NodePath("../AreaInteraccion")
 tela = NodePath("../Persiana/Tela")
@@ -1574,6 +1574,37 @@ reloj = NodePath("../../../RelojNoche")
 etiqueta = NodePath("../Texto")
 digital = true
 
+[node name="Cuerpo2" type="MeshInstance3D" parent="Oficina/RelojEscritorio" unique_id=819852709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
+mesh = SubResource("BoxMesh_reloj_cuerpo")
+surface_material_override/0 = SubResource("mat_plastico_negro")
+
+[node name="Pantalla2" type="MeshInstance3D" parent="Oficina/RelojEscritorio" unique_id=365085161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.036)
+mesh = SubResource("BoxMesh_reloj_pantalla")
+surface_material_override/0 = SubResource("mat_reloj_pantalla")
+
+[node name="Texto2" type="Label3D" parent="Oficina/RelojEscritorio" unique_id=588060216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.0385)
+pixel_size = 0.0006
+modulate = Color(1, 0.12, 0.06, 1)
+text = "12:00"
+font = SubResource("fuente_reloj")
+font_size = 64
+outline_size = 0
+
+[node name="Brillo2" type="OmniLight3D" parent="Oficina/RelojEscritorio" unique_id=1952824008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.08)
+light_color = Color(1, 0.1, 0.05, 1)
+light_energy = 0.15
+omni_range = 0.4
+
+[node name="MostrarHora2" type="Node" parent="Oficina/RelojEscritorio" unique_id=2057778645 node_paths=PackedStringArray("reloj", "etiqueta")]
+script = ExtResource("12_mostrar_hora")
+reloj = NodePath("../../../RelojNoche")
+etiqueta = NodePath("../Texto")
+digital = true
+
 [node name="Iluminacion" type="Node3D" parent="." unique_id=836898097]
 
 [node name="Tubo1" type="MeshInstance3D" parent="Iluminacion" unique_id=1039681914]
@@ -1785,41 +1816,9 @@ etiqueta = NodePath("../Hora")
 
 [node name="EncuentroPruscino" parent="." unique_id=1700942146 instance=ExtResource("14_encuentro_pruscino")]
 
-[node name="Cuerpo" type="MeshInstance3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0375, 0)
-mesh = SubResource("BoxMesh_reloj_cuerpo")
-surface_material_override/0 = SubResource("mat_plastico_negro")
-
-[node name="Pantalla" type="MeshInstance3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.036)
-mesh = SubResource("BoxMesh_reloj_pantalla")
-surface_material_override/0 = SubResource("mat_reloj_pantalla")
-
-[node name="Texto" type="Label3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0385, 0.0385)
-pixel_size = 0.0006
-modulate = Color(1, 0.12, 0.06, 1)
-outline_size = 0
-text = "12:00"
-font = SubResource("fuente_reloj")
-font_size = 64
-
-[node name="Brillo" type="OmniLight3D" parent="Oficina/RelojEscritorio"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0.08)
-light_color = Color(1, 0.1, 0.05, 1)
-light_energy = 0.15
-omni_range = 0.4
-
-[node name="MostrarHora" type="Node" parent="Oficina/RelojEscritorio" node_paths=PackedStringArray("reloj", "etiqueta")]
-script = ExtResource("12_mostrar_hora")
-reloj = NodePath("../../../RelojNoche")
-etiqueta = NodePath("../Texto")
-digital = true
-
-[node name="Checkpoint" type="Node" parent="." node_paths=PackedStringArray("reloj", "etiqueta_noche")]
+[node name="Checkpoint" type="Node" parent="." unique_id=102137523 node_paths=PackedStringArray("reloj", "etiqueta_noche")]
 script = ExtResource("13_checkpoint")
 reloj = NodePath("../RelojNoche")
 etiqueta_noche = NodePath("../HUDNoche/Noche")
-noche = 1
 
-[node name="EncuentroMariFreddy" parent="." instance=ExtResource("15_encuentro_marifreddy")]
+[node name="EncuentroMariFreddy" parent="." unique_id=379014124 instance=ExtResource("15_encuentro_marifreddy")]
