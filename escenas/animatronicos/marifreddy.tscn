@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://assets/Animatronicos/Mari3D/MariFreddy/modelo3d/marifreddy.glb" id="1_modelo"]
+[ext_resource type="PackedScene" path="res://assets/Animatronicos/MariFreddy/modelo3d/marifreddy.glb" id="1_modelo"]
 [ext_resource type="Script" path="res://scripts/animatronicos/marifreddy.gd" id="2_marifreddy"]
 
 [node name="MariFreddy" type="Node3D" node_paths=PackedStringArray("reproductor")]

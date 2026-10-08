@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4r7v8n5gw6gm"
-path="res://.godot/imported/charlieIzquierda.png-29d6516b56e1a1a6e558d87a3818a7da.ctex"
+uid="uid://bwk8nt8guqh1j"
+path="res://.godot/imported/pruscinoDerecha.png-20bb1ab458d03b1d5ca4d91117577a99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/charlieIzquierda.png"
-dest_files=["res://.godot/imported/charlieIzquierda.png-29d6516b56e1a1a6e558d87a3818a7da.ctex"]
+source_file="res://assets/nivel1/pruscinoDerecha.png"
+dest_files=["res://.godot/imported/pruscinoDerecha.png-20bb1ab458d03b1d5ca4d91117577a99.ctex"]
 
 [params]
 

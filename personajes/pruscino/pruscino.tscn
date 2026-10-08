@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://tj3qrivxfcle"]
 
-[ext_resource type="Texture2D" uid="uid://0u88v2urvoeo" path="res://assests/pruscinoIzquierda.png" id="1b_izquierda"]
-[ext_resource type="Texture2D" uid="uid://bwk8nt8guqh1j" path="res://assests/pruscinoDerecha.png" id="1_derecha"]
+[ext_resource type="Texture2D" path="res://assets/nivel1/pruscinoIzquierda.png" id="1b_izquierda"]
+[ext_resource type="Texture2D" path="res://assets/nivel1/pruscinoDerecha.png" id="1_derecha"]
 [ext_resource type="Script" uid="uid://drsgk1ncmvq1u" path="res://personajes/pruscino/componentes/patrol_component.gd" id="2_patrol"]
 [ext_resource type="Script" uid="uid://dbhy4nberc7c3" path="res://personajes/pruscino/componentes/detection_component.gd" id="3_detection"]
 

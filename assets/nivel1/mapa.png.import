@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwk8nt8guqh1j"
-path="res://.godot/imported/pruscinoDerecha.png-c29b3f29a6d27877ce3e56ec0a4c5629.ctex"
+uid="uid://cwtbnxgbiqc5c"
+path="res://.godot/imported/mapa.png-f37c06748e0a9c14bf959f8e84550a67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assests/pruscinoDerecha.png"
-dest_files=["res://.godot/imported/pruscinoDerecha.png-c29b3f29a6d27877ce3e56ec0a4c5629.ctex"]
+source_file="res://assets/nivel1/mapa.png"
+dest_files=["res://.godot/imported/mapa.png-f37c06748e0a9c14bf959f8e84550a67.ctex"]
 
 [params]
 

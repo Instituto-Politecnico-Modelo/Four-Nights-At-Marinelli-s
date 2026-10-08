@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="PackedScene" path="res://assets/Animatronicos/Prus3D/Pruscino/modelo3d/pruscino.glb" id="1_modelo"]
+[ext_resource type="PackedScene" path="res://assets/Animatronicos/PrusBonnie/Pruscino/modelo3d/pruscino.glb" id="1_modelo"]
 [ext_resource type="Script" path="res://scripts/animatronicos/pruscino.gd" id="2_pruscino"]
 
 [node name="Pruscino" type="Node3D" node_paths=PackedStringArray("reproductor")]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://4pqund3nukl7"]
 
-[ext_resource type="Texture2D" uid="uid://cwtbnxgbiqc5c" path="res://assests/mapa.png" id="1_tjyhn"]
+[ext_resource type="Texture2D" uid="uid://cwtbnxgbiqc5c" path="res://assets/nivel1/mapa.png" id="1_tjyhn"]
 [ext_resource type="PackedScene" uid="uid://da0xfnkstgvu" path="res://personajes/charlie/charlie.tscn" id="2_re0in"]
 [ext_resource type="PackedScene" uid="uid://bqxqf5j0h3n8t" path="res://ui/interaction_prompt/interaction_prompt.tscn" id="4_prompt"]
 [ext_resource type="PackedScene" uid="uid://dufntffiu550f" path="res://interactuables/computadora/computadora.tscn" id="5_computadora"]

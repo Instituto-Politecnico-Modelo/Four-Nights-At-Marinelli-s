@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://da0xfnkstgvu"]
 
-[ext_resource type="Texture2D" uid="uid://cmjglko8bl505" path="res://assests/charlieDerecha.png" id="1_derecha"]
-[ext_resource type="Texture2D" uid="uid://4r7v8n5gw6gm" path="res://assests/charlieIzquierda.png" id="2_izquierda"]
+[ext_resource type="Texture2D" path="res://assets/nivel1/charlieDerecha.png" id="1_derecha"]
+[ext_resource type="Texture2D" path="res://assets/nivel1/charlieIzquierda.png" id="2_izquierda"]
 [ext_resource type="Script" uid="uid://dbb8u8jcyd6xq" path="res://personajes/charlie/componentes/movement_component.gd" id="3_movimiento"]
 [ext_resource type="Script" uid="uid://167384ghfdyj" path="res://personajes/charlie/componentes/interactor_component.gd" id="4_interactor"]
 [ext_resource type="Script" path="res://personajes/charlie/componentes/hiding_component.gd" id="5_hiding"]

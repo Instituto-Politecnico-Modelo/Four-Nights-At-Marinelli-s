@@ -22,7 +22,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if cuerpo == null:
 		return
-	var direccion := Input.get_vector("mover_izquierda", "mover_derecha", "mover_arriba", "mover_abajo")
+	var direccion := Input.get_vector("Izquierda", "Derecha", "Arriba", "Abajo")
 	cuerpo.velocity = direccion * velocidad
 	cuerpo.move_and_slide()
 	_actualizar_orientacion(direccion)
