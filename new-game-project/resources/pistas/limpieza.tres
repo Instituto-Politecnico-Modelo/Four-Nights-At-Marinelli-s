@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="PistaResource" load_steps=2 format=3]
+[ext_resource type="Script" path="res://resources/pista_resource.gd" id="1"]
+[resource]
+script = ExtResource("1")
+id = &"limpieza"
+texto = "ARCHIVO: limpieza.txt\n\nCharlie: limpiar debajo de los escritorios antes de irte. Si escuchás pasos cuando el laboratorio ya está vacío, quedate quieto y esperá."

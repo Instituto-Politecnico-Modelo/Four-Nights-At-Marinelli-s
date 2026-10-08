@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bexvguh8gctbe"]
+
+[ext_resource type="PackedScene" path="res://escenas/animatronicos/marifreddy.tscn" id="1_marifreddy"]
+[ext_resource type="Script" uid="uid://6iwripfohfev" path="res://scripts/componentes/componente_carrera_puerta.gd" id="2_carrera"]
+[ext_resource type="AudioStream" uid="uid://bn7nvooyktcx2" path="res://sonidos/foxyrun.mp3" id="2_ppty4"]
+[ext_resource type="Script" uid="uid://b5jbthko3qpl" path="res://scripts/componentes/componente_jumpscare.gd" id="3_jumpscare"]
+
+[node name="EncuentroMariFreddy" type="Node3D" unique_id=139146737]
+
+[node name="MariFreddy" parent="." unique_id=979082393 instance=ExtResource("1_marifreddy")]
+
+[node name="SonidoCarrera" type="AudioStreamPlayer3D" parent="." unique_id=1086562505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1.2, 3)
+stream = ExtResource("2_ppty4")
+
+[node name="CarreraPuerta" type="Node" parent="." unique_id=1206962965 node_paths=PackedStringArray("sonido_carrera")]
+script = ExtResource("2_carrera")
+sonido_carrera = NodePath("../SonidoCarrera")
+
+[node name="PuntoJumpscare" type="Marker3D" parent="." unique_id=1506406932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -1)
+
+[node name="SonidoJumpscare" type="AudioStreamPlayer3D" parent="PuntoJumpscare" unique_id=1088280856]
+
+[node name="Jumpscare" type="Node" parent="." unique_id=1728439546 node_paths=PackedStringArray("animatronico", "punto", "sonido")]
+script = ExtResource("3_jumpscare")
+animatronico = NodePath("../MariFreddy")
+punto = NodePath("../PuntoJumpscare")
+sonido = NodePath("../PuntoJumpscare/SonidoJumpscare")
+angulo_mirada = 180.0
+
+[connection signal="jumpscare_solicitado" from="CarreraPuerta" to="Jumpscare" method="activar"]

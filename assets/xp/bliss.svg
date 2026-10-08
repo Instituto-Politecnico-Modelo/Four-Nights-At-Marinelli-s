@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1152" height="648" viewBox="0 0 1152 648">
+  <defs>
+    <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1d5bd2"/>
+      <stop offset="0.5" stop-color="#5d9be6"/>
+      <stop offset="1" stop-color="#b9d6f4"/>
+    </linearGradient>
+    <linearGradient id="pasto" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#78c83f"/>
+      <stop offset="0.45" stop-color="#46a01f"/>
+      <stop offset="1" stop-color="#2a7410"/>
+    </linearGradient>
+    <linearGradient id="pastoAtras" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5caf2e"/>
+      <stop offset="1" stop-color="#2f7d14"/>
+    </linearGradient>
+  </defs>
+  <rect width="1152" height="648" fill="url(#cielo)"/>
+  <g fill="#ffffff">
+    <ellipse cx="180" cy="120" rx="160" ry="38" opacity="0.55"/>
+    <ellipse cx="260" cy="100" rx="90" ry="30" opacity="0.6"/>
+    <ellipse cx="620" cy="170" rx="210" ry="42" opacity="0.45"/>
+    <ellipse cx="700" cy="150" rx="110" ry="34" opacity="0.55"/>
+    <ellipse cx="980" cy="90" rx="150" ry="30" opacity="0.5"/>
+    <ellipse cx="1040" cy="260" rx="120" ry="26" opacity="0.4"/>
+    <ellipse cx="360" cy="270" rx="140" ry="24" opacity="0.35"/>
+  </g>
+  <path d="M430 470 C 650 380, 900 360, 1152 400 L1152 648 L430 648 Z" fill="url(#pastoAtras)"/>
+  <path d="M0 450 C 220 330, 520 330, 780 440 S 1060 560, 1152 520 L1152 648 L0 648 Z" fill="url(#pasto)"/>
+</svg>
