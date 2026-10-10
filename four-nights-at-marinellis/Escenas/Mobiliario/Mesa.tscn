@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://c8cmgu12qkjbt"]
+
+[ext_resource type="Shader" uid="uid://d35ehbe0af2vy" path="res://Materiales/SuperficieAula.gdshader" id="1_pv4hk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mvv6j"]
+render_priority = 0
+shader = ExtResource("1_pv4hk")
+shader_parameter/color_base = Color(0.7764706, 0.78431374, 0.74509805, 1)
+shader_parameter/tipo = 0
+shader_parameter/desgaste = 0.12
+
+[sub_resource type="BoxMesh" id="BoxMesh_6jfbk"]
+material = SubResource("ShaderMaterial_mvv6j")
+size = Vector3(2.1, 0.04, 0.92)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vhflf"]
+size = Vector3(2.1, 0.04, 0.92)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioqiy"]
+albedo_color = Color(0.49019608, 0.5254902, 0.50980395, 1)
+metallic = 0.7
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_6nmau"]
+material = SubResource("StandardMaterial3D_ioqiy")
+size = Vector3(2.11, 0.016, 0.93)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ovcv"]
+albedo_color = Color(0.1254902, 0.15294118, 0.14509805, 1)
+metallic = 0.55
+roughness = 0.66
+
+[sub_resource type="BoxMesh" id="BoxMesh_n62p0"]
+material = SubResource("StandardMaterial3D_5ovcv")
+size = Vector3(0.035, 0.7, 0.035)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bcnya"]
+size = Vector3(0.035, 0.7, 0.035)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6x1tx"]
+material = SubResource("StandardMaterial3D_5ovcv")
+size = Vector3(0.025, 0.7, 0.025)
+
+[node name="Mesa" type="Node3D" unique_id=1499164215]
+
+[node name="Tablero" type="MeshInstance3D" parent="." unique_id=111523519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.73, 0)
+mesh = SubResource("BoxMesh_6jfbk")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Tablero" unique_id=201256769]
+
+[node name="Colision" type="CollisionShape3D" parent="Tablero/Cuerpo" unique_id=483298984]
+shape = SubResource("BoxShape3D_vhflf")
+
+[node name="Canto" type="MeshInstance3D" parent="." unique_id=403428250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.704, 0)
+mesh = SubResource("BoxMesh_6nmau")
+
+[node name="Pata" type="MeshInstance3D" parent="." unique_id=1337497821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94, 0.35, -0.35)
+mesh = SubResource("BoxMesh_n62p0")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Pata" unique_id=1387208416]
+
+[node name="Colision" type="CollisionShape3D" parent="Pata/Cuerpo" unique_id=381430271]
+shape = SubResource("BoxShape3D_bcnya")
+
+[node name="Pata2" type="MeshInstance3D" parent="." unique_id=836116017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.94, 0.35, 0.35)
+mesh = SubResource("BoxMesh_n62p0")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Pata2" unique_id=1858602302]
+
+[node name="Colision" type="CollisionShape3D" parent="Pata2/Cuerpo" unique_id=910326966]
+shape = SubResource("BoxShape3D_bcnya")
+
+[node name="ConexionPata" type="MeshInstance3D" parent="." unique_id=805801956]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.94, 0.2, 0)
+mesh = SubResource("BoxMesh_6x1tx")
+
+[node name="Pata3" type="MeshInstance3D" parent="." unique_id=888913056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 0.35, -0.35)
+mesh = SubResource("BoxMesh_n62p0")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Pata3" unique_id=1118388080]
+
+[node name="Colision" type="CollisionShape3D" parent="Pata3/Cuerpo" unique_id=1517037604]
+shape = SubResource("BoxShape3D_bcnya")
+
+[node name="Pata4" type="MeshInstance3D" parent="." unique_id=30259337]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94, 0.35, 0.35)
+mesh = SubResource("BoxMesh_n62p0")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Pata4" unique_id=220637947]
+
+[node name="Colision" type="CollisionShape3D" parent="Pata4/Cuerpo" unique_id=1925544446]
+shape = SubResource("BoxShape3D_bcnya")
+
+[node name="ConexionPata2" type="MeshInstance3D" parent="." unique_id=257019040]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.94, 0.2, 0)
+mesh = SubResource("BoxMesh_6x1tx")

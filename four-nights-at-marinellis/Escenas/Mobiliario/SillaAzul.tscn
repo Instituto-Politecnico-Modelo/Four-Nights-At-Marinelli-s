@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c4dig1rygked3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d41qv"]
+albedo_color = Color(0.14117648, 0.35686275, 0.57254905, 1)
+roughness = 0.62
+
+[sub_resource type="BoxMesh" id="BoxMesh_q0j23"]
+material = SubResource("StandardMaterial3D_d41qv")
+size = Vector3(0.4, 0.035, 0.39)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_geqdq"]
+size = Vector3(0.4, 0.035, 0.39)
+
+[sub_resource type="BoxMesh" id="BoxMesh_57yym"]
+material = SubResource("StandardMaterial3D_d41qv")
+size = Vector3(0.4, 0.24, 0.027)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bqys"]
+size = Vector3(0.4, 0.24, 0.027)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ovcv"]
+albedo_color = Color(0.1254902, 0.15294118, 0.14509805, 1)
+metallic = 0.55
+roughness = 0.66
+
+[sub_resource type="BoxMesh" id="BoxMesh_cdnpp"]
+material = SubResource("StandardMaterial3D_5ovcv")
+size = Vector3(0.022, 0.41575956, 0.022)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lmsh6"]
+material = SubResource("StandardMaterial3D_5ovcv")
+size = Vector3(0.022, 0.84122294, 0.022)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbjc2"]
+material = SubResource("StandardMaterial3D_5ovcv")
+size = Vector3(0.018, 0.37, 0.018)
+
+[node name="SillaAzul" type="Node3D" unique_id=742366367]
+
+[node name="Asiento" type="MeshInstance3D" parent="." unique_id=794679913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44, 0)
+mesh = SubResource("BoxMesh_q0j23")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Asiento" unique_id=573387299]
+
+[node name="Colision" type="CollisionShape3D" parent="Asiento/Cuerpo" unique_id=1207292058]
+shape = SubResource("BoxShape3D_geqdq")
+
+[node name="Respaldo" type="MeshInstance3D" parent="." unique_id=1284893862]
+transform = Transform3D(1, 0, 0, 0, 0.9950042, 0.09983342, 0, -0.09983342, 0.9950042, 0, 0.74, 0.19)
+mesh = SubResource("BoxMesh_57yym")
+
+[node name="Cuerpo" type="StaticBody3D" parent="Respaldo" unique_id=949958228]
+
+[node name="Colision" type="CollisionShape3D" parent="Respaldo/Cuerpo" unique_id=100807044]
+shape = SubResource("BoxShape3D_1bqys")
+
+[node name="PataDelantera" type="MeshInstance3D" parent="." unique_id=1343355859]
+transform = Transform3D(0.9966329, 0.08177803, -0.005942023, -0.08177803, 0.9861469, -0.1443142, -0.005942023, 0.1443142, 0.98951405, -0.187, 0.22500001, -0.17)
+mesh = SubResource("BoxMesh_cdnpp")
+
+[node name="PataTrasera" type="MeshInstance3D" parent="." unique_id=1545326832]
+transform = Transform3D(0.99918264, 0.04041734, 0.00072121323, -0.04041734, 0.99854624, 0.035662368, 0.00072121323, -0.035662368, 0.99936366, -0.187, 0.44, 0.215)
+mesh = SubResource("BoxMesh_lmsh6")
+
+[node name="Refuerzo" type="MeshInstance3D" parent="." unique_id=838750048]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, -0.17, 0.25, 0.015000001)
+mesh = SubResource("BoxMesh_rbjc2")
+
+[node name="PataDelantera2" type="MeshInstance3D" parent="." unique_id=508413096]
+transform = Transform3D(0.9966329, -0.08177803, 0.005942023, 0.08177803, 0.9861469, -0.1443142, 0.005942023, 0.1443142, 0.98951405, 0.187, 0.22500001, -0.17)
+mesh = SubResource("BoxMesh_cdnpp")
+
+[node name="PataTrasera2" type="MeshInstance3D" parent="." unique_id=2035267521]
+transform = Transform3D(0.99918264, -0.04041734, -0.00072121323, 0.04041734, 0.99854624, 0.035662368, -0.00072121323, -0.035662368, 0.99936366, 0.187, 0.44, 0.215)
+mesh = SubResource("BoxMesh_lmsh6")
+
+[node name="Refuerzo2" type="MeshInstance3D" parent="." unique_id=904272316]
+transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.17, 0.25, 0.015000001)
+mesh = SubResource("BoxMesh_rbjc2")

@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://b2l44p0yk4oax"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw2mm"]
+albedo_color = Color(0.08627451, 0.10980392, 0.10980392, 1)
+roughness = 0.63
+
+[sub_resource type="BoxMesh" id="BoxMesh_ulbtc"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.32, 0.13, 0.31)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yxsf0"]
+albedo_color = Color(0.1882353, 0.21568628, 0.21176471, 1)
+roughness = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_am2wx"]
+material = SubResource("StandardMaterial3D_yxsf0")
+size = Vector3(0.312, 0.116, 0.012)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ov1sd"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.105, 0.02, 0.004)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ioqiy"]
+albedo_color = Color(0.49019608, 0.5254902, 0.50980395, 1)
+metallic = 0.7
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_1mj4r"]
+material = SubResource("StandardMaterial3D_ioqiy")
+size = Vector3(0.013, 0.007, 0.005)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qib35"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.22, 0.025, 0.16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hmu5y"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.057, 0.14, 0.045)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i301f"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.51, 0.303, 0.042)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h65pw"]
+albedo_color = Color(0.07450981, 0.1764706, 0.17254902, 1)
+roughness = 0.42
+emission_enabled = true
+emission = Color(0.22352941, 0.42745098, 0.3764706, 1)
+emission_energy_multiplier = 0.45
+
+[sub_resource type="BoxMesh" id="BoxMesh_ny5xe"]
+material = SubResource("StandardMaterial3D_h65pw")
+size = Vector3(0.474, 0.258, 0.004)
+
+[sub_resource type="BoxMesh" id="BoxMesh_28rd4"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.43, 0.027, 0.145)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3yrod"]
+material = SubResource("StandardMaterial3D_yxsf0")
+size = Vector3(0.16, 0.008, 0.019)
+
+[sub_resource type="SphereMesh" id="SphereMesh_c78y6"]
+material = SubResource("StandardMaterial3D_cw2mm")
+radius = 0.034
+height = 0.068
+radial_segments = 16
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utxnt"]
+albedo_color = Color(0.6156863, 0.18431373, 0.14901961, 1)
+roughness = 0.55
+
+[sub_resource type="BoxMesh" id="BoxMesh_17mpr"]
+material = SubResource("StandardMaterial3D_utxnt")
+size = Vector3(0.009, 0.008, 0.022)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbxof"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.004, 0.11401755, 0.004)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8y2cj"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.004, 0.3522783, 0.004)
+
+[sub_resource type="BoxMesh" id="BoxMesh_68gqu"]
+material = SubResource("StandardMaterial3D_cw2mm")
+size = Vector3(0.004, 0.38118237, 0.004)
+
+[node name="PuestoComputadora" type="Node3D" unique_id=2069405480]
+
+[node name="GabineteSFF" type="MeshInstance3D" parent="." unique_id=1137049343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.065, 0.08)
+mesh = SubResource("BoxMesh_ulbtc")
+
+[node name="FrenteGabinete" type="MeshInstance3D" parent="." unique_id=1165659091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.066, -0.078)
+mesh = SubResource("BoxMesh_am2wx")
+
+[node name="Lector" type="MeshInstance3D" parent="." unique_id=526035954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09, 0.087, -0.087)
+mesh = SubResource("BoxMesh_ov1sd")
+
+[node name="USB" type="MeshInstance3D" parent="." unique_id=766182235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11, 0.04, -0.088)
+mesh = SubResource("BoxMesh_1mj4r")
+
+[node name="USB2" type="MeshInstance3D" parent="." unique_id=1683158150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.085, 0.04, -0.088)
+mesh = SubResource("BoxMesh_1mj4r")
+
+[node name="BaseMonitor" type="MeshInstance3D" parent="." unique_id=50144399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145, 0.08)
+mesh = SubResource("BoxMesh_qib35")
+
+[node name="PieMonitor" type="MeshInstance3D" parent="." unique_id=477327726]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.21, 0.13)
+mesh = SubResource("BoxMesh_hmu5y")
+
+[node name="Monitor" type="MeshInstance3D" parent="." unique_id=905699329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.355, 0.08)
+mesh = SubResource("BoxMesh_i301f")
+
+[node name="Pantalla" type="MeshInstance3D" parent="." unique_id=455187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.362, 0.057)
+mesh = SubResource("BoxMesh_ny5xe")
+
+[node name="Teclado" type="Node3D" parent="." unique_id=1598628591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02, 0.016, -0.28)
+
+[node name="Carcasa" type="MeshInstance3D" parent="Teclado" unique_id=2099877882]
+mesh = SubResource("BoxMesh_28rd4")
+
+[node name="Espacio" type="MeshInstance3D" parent="Teclado" unique_id=142711067]
+transform = Transform3D(2.2778254, 0.008226382, 0.012409596, -0.011892215, 1.5700983, -0.03356485, -0.0060100323, 0.0110274395, 4.7697363, -0.0012773015, 0.017999971, 0.0051986277)
+mesh = SubResource("BoxMesh_3yrod")
+
+[node name="Mouse" type="MeshInstance3D" parent="." unique_id=1176913546]
+transform = Transform3D(1, 0, 0, 0, 0.63, 0, 0, 0, 1.65, -0.34, 0.025, -0.28)
+mesh = SubResource("SphereMesh_c78y6")
+
+[node name="RuedaRoja" type="MeshInstance3D" parent="." unique_id=128881844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34, 0.046, -0.259)
+mesh = SubResource("BoxMesh_17mpr")
+
+[node name="CableMouse" type="MeshInstance3D" parent="." unique_id=1747028312]
+transform = Transform3D(0.9307692, -0.26311743, 0.25384617, 0.26311743, 0, -0.9647638, 0.25384617, 0.9647638, 0.069230735, -0.35500002, 0.01, -0.175)
+mesh = SubResource("BoxMesh_rbxof")
+
+[node name="CableMouse2" type="MeshInstance3D" parent="." unique_id=1903220172]
+transform = Transform3D(0.6776793, 0.56773293, -0.46736503, -0.56773293, 0, -0.82321274, -0.46736503, 0.82321274, 0.32232076, -0.27, 0.01, 0.025000002)
+mesh = SubResource("BoxMesh_8y2cj")
+
+[node name="CableTeclado" type="MeshInstance3D" parent="." unique_id=1669054080]
+transform = Transform3D(0.99380594, 0.07870246, -0.07845834, -0.07870246, -1.1920929e-07, -0.99689823, -0.07845834, 0.99689823, 0.0061939955, 0.195, 0.01, -0.009999998)
+mesh = SubResource("BoxMesh_68gqu")
