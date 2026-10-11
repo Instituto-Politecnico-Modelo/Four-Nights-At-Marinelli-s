@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b2l44p0yk4oax" path="res://Escenas/Mobiliario/PuestoComputadora.tscn" id="5_ba2fb"]
 [ext_resource type="Shader" uid="uid://7t8h4k7pj761" path="res://Materiales/Vineta.gdshader" id="8_v2686"]
 [ext_resource type="PackedScene" path="res://Escenas/PasilloMapa.tscn" id="9_tiago"]
+[ext_resource type="PackedScene" uid="uid://b66derbsbgm0j" path="res://Escenas/GuardiaPlayer.tscn" id="10_guardia"]
+[ext_resource type="PackedScene" uid="uid://g5wl181qhpmd" path="res://Animatronicos/MariFreddy/marifreddy.glb" id="11_mari"]
+[ext_resource type="PackedScene" uid="uid://doxfq0qpmbxp" path="res://Animatronicos/Pruscino/pruscino.glb" id="12_prus"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ovcv"]
 albedo_color = Color(0.1254902, 0.15294118, 0.14509805, 1)
@@ -444,7 +447,6 @@ adjustment_contrast = 1.06
 adjustment_saturation = 0.78
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ny3pp"]
-render_priority = 0
 shader = ExtResource("8_v2686")
 
 [node name="Oficina" type="Node3D" unique_id=1293546856]
@@ -978,14 +980,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0.751, -1.25)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7, 0.751, -1.25)
 
 [node name="ComputadoraClave" parent="Computadoras" unique_id=681997834 instance=ExtResource("5_ba2fb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.751, -1.25)
+transform = Transform3D(1.0176288, 0, 0.4918322, 0, 1.1486388, 0, -0.5306699, 0, 0.94315237, 0.6620446, 0.751, -1.2482378)
 
 [node name="TituloPantalla" type="Label3D" parent="Computadoras/ComputadoraClave" unique_id=362196289]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.424, 0.053)
+transform = Transform3D(-1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, -1, 1.1920929e-07, 0.36679727, 0.053000093)
 pixel_size = 0.001
 shaded = true
-modulate = Color(0.5803922, 0.7607843, 0.6862745, 1)
-text = "MARINELLI"
+alpha_scissor_threshold = 0.486
+modulate = Color(0.66145, 0.13021314, 0.17295986, 1)
+outline_modulate = Color(0.4261632, 0.09414641, 0, 1)
+text = "Nicolas Pruscino"
 font_size = 22
 outline_size = 0
 
@@ -993,10 +997,8 @@ outline_size = 0
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.337, 0.052)
 pixel_size = 0.001
 shaded = true
-modulate = Color(0.43529412, 0.6156863, 0.5372549, 1)
-text = "SEGURIDAD / 01
-
-00:00    -    EN ESPERA"
+modulate = Color(0.82043356, 0.14422375, 0.0681506, 1)
+text = "Enter Password"
 font_size = 12
 outline_size = 0
 
@@ -1202,7 +1204,7 @@ omni_range = 6.0
 omni_attenuation = 1.25
 
 [node name="LuzEntrada" type="OmniLight3D" parent="Luces" unique_id=562962076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8, 2.5, -3.8)
+transform = Transform3D(0.9996776, 0.025391812, 0, -0.025391812, 0.9996776, 0, 0, 0, 1, 6.8, 2.5, -1.0272214)
 light_color = Color(0.7490196, 0.6627451, 0.50980395, 1)
 light_energy = 0.38
 light_size = 0.15
@@ -1221,7 +1223,7 @@ omni_range = 2.7
 omni_attenuation = 1.25
 
 [node name="LuzMonitorClave" type="OmniLight3D" parent="Luces" unique_id=1903416677]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38193363, 1.14, -1.57)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38193363, 1.14, -0.993625)
 light_color = Color(0.41960785, 0.7254902, 0.6431373, 1)
 light_energy = 0.17
 light_size = 0.15
@@ -1255,14 +1257,17 @@ mouse_filter = 2
 [node name="SpawnJugador" type="Marker3D" parent="." unique_id=97925269]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.61505044, 0.63674116, -2.65)
 
-[node name="VistaPrevia" type="Node3D" parent="." unique_id=341659855]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.65, 1.67, -2.65)
-
-[node name="Camera3D" type="Camera3D" parent="VistaPrevia" unique_id=996607972]
-transform = Transform3D(1, 0, 0, 0, 0.9872273, 0.15931822, 0, -0.15931822, 0.9872273, 0.37600842, -0.45888472, -0.36373043)
-current = true
-fov = 78.0
-far = 60.0
-
 [node name="ConexionMapa" parent="." unique_id=1728337464 instance=ExtResource("9_tiago")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.804573, 0, -8.727626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.804573, 0, -8.5631275)
+
+[node name="PosicionJugador" type="Node3D" parent="." unique_id=1625463276]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.274, 1.211, -2.286)
+
+[node name="Player" parent="PosicionJugador" unique_id=911961018 instance=ExtResource("10_guardia")]
+transform = Transform3D(0.9884384, 0.0013168511, 0.15161741, -1.6645062e-06, 0.99996245, -0.008674177, -0.15162313, 0.008573636, 0.9884013, -0.082993746, 0, -0.5975888)
+
+[node name="MariFreddy" parent="." unique_id=1575803403 instance=ExtResource("11_mari")]
+transform = Transform3D(0.004014199, 0, -0.99999195, 0, 1, 0, 0.99999195, 0, 0.004014199, 15.59103, 0, -7)
+
+[node name="Pruscino" parent="." unique_id=2027226233 instance=ExtResource("12_prus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
