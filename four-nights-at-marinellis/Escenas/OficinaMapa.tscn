@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://b66derbsbgm0j" path="res://Escenas/GuardiaPlayer.tscn" id="10_guardia"]
 [ext_resource type="PackedScene" uid="uid://g5wl181qhpmd" path="res://Animatronicos/MariFreddy/marifreddy.glb" id="11_mari"]
 [ext_resource type="PackedScene" uid="uid://doxfq0qpmbxp" path="res://Animatronicos/Pruscino/pruscino.glb" id="12_prus"]
+[ext_resource type="Script" uid="uid://bn0slid4inrtj" path="res://Scripts/Monitor/ZonaMonitor.gd" id="13_zona"]
+[ext_resource type="PackedScene" path="res://Escenas/PantallaMonitor.tscn" id="14_pantalla"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ovcv"]
 albedo_color = Color(0.1254902, 0.15294118, 0.14509805, 1)
@@ -259,40 +261,6 @@ shader_parameter/desgaste = 0.12
 material = SubResource("ShaderMaterial_2hrnc")
 size = Vector3(0.3, 0.18, 0.02)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_sefe8"]
-material = SubResource("StandardMaterial3D_ioqiy")
-top_radius = 0.16
-bottom_radius = 0.16
-height = 0.035
-radial_segments = 16
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bw3n4"]
-albedo_color = Color(0.84313726, 0.8509804, 0.7921569, 1)
-roughness = 0.85
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_fitg3"]
-material = SubResource("StandardMaterial3D_bw3n4")
-top_radius = 0.145
-bottom_radius = 0.145
-height = 0.006
-radial_segments = 16
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw2mm"]
-albedo_color = Color(0.08627451, 0.10980392, 0.10980392, 1)
-roughness = 0.63
-
-[sub_resource type="BoxMesh" id="BoxMesh_84le2"]
-material = SubResource("StandardMaterial3D_cw2mm")
-size = Vector3(0.008, 0.02, 0.005)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qsgt2"]
-material = SubResource("StandardMaterial3D_cw2mm")
-size = Vector3(0.009, 0.11199999, 0.009)
-
-[sub_resource type="BoxMesh" id="BoxMesh_e16lg"]
-material = SubResource("StandardMaterial3D_cw2mm")
-size = Vector3(0.013, 0.080622606, 0.013)
-
 [sub_resource type="BoxMesh" id="BoxMesh_2j2bn"]
 material = SubResource("ShaderMaterial_e2t5u")
 size = Vector3(2.6, 1.5, 0.1)
@@ -322,6 +290,9 @@ roughness = 0.05
 [sub_resource type="BoxMesh" id="BoxMesh_vg3nd"]
 material = SubResource("StandardMaterial3D_vdr1")
 size = Vector3(1.86, 1.36, 0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mon1"]
+size = Vector3(0.5, 0.3, 0.1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_aa74i"]
 material = SubResource("ShaderMaterial_itbjr")
@@ -764,10 +735,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.4
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7, 0, -2.11)
 
 [node name="Silla5" parent="Muebles" unique_id=622706943 instance=ExtResource("4_icknl")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -2.11)
+transform = Transform3D(-0.7031093, 0, -0.7110819, 0, 1, 0, 0.7110819, 0, -0.7031093, 0.151, 0, -1.914)
 
 [node name="Silla6" parent="Muebles" unique_id=1539921609 instance=ExtResource("4_icknl")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.7, 0, -1.73)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.6902179, 0, -1.9000442)
 
 [node name="Silla7" parent="Muebles" unique_id=1180423986 instance=ExtResource("3_fm4a0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.4, 0, -2.11)
@@ -862,70 +833,6 @@ text = "AULA  /  04"
 font_size = 22
 outline_size = 0
 
-[node name="Reloj" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=939659242]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.24, 2.65, -0.075)
-mesh = SubResource("CylinderMesh_sefe8")
-
-[node name="EsferaReloj" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1554217793]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.24, 2.65, -0.098)
-mesh = SubResource("CylinderMesh_fitg3")
-
-[node name="MarcaHora" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1977609855]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24, 2.775, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora2" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1070352978]
-transform = Transform3D(0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0, 1, 1.3025, 2.758253, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora3" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=163257721]
-transform = Transform3D(0.49999997, 0.86602545, 0, -0.86602545, 0.49999997, 0, 0, 0, 1, 1.3482531, 2.7125, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora4" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1809863919]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 1.365, 2.65, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora5" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1038416576]
-transform = Transform3D(-0.50000006, 0.8660254, 0, -0.8660254, -0.50000006, 0, 0, 0, 1, 1.3482531, 2.5875, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora6" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1869816706]
-transform = Transform3D(-0.8660254, 0.50000006, 0, -0.50000006, -0.8660254, 0, 0, 0, 1, 1.3025, 2.5417469, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora7" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=833710908]
-transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 1.24, 2.525, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora8" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1032225568]
-transform = Transform3D(-0.8660254, -0.49999997, 0, 0.49999997, -0.8660254, 0, 0, 0, 1, 1.1775, 2.5417469, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora9" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=419616121]
-transform = Transform3D(-0.4999999, -0.86602545, 0, 0.86602545, -0.4999999, 0, 0, 0, 1, 1.1317468, 2.5875, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora10" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=2057282420]
-transform = Transform3D(1.1924881e-08, -1, 0, 1, 1.1924881e-08, 0, 0, 0, 1, 1.115, 2.65, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora11" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=549241495]
-transform = Transform3D(0.4999999, -0.86602545, 0, 0.86602545, 0.4999999, 0, 0, 0, 1, 1.1317468, 2.7125, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="MarcaHora12" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=975533822]
-transform = Transform3D(0.8660253, -0.5000002, 0, 0.5000002, 0.8660253, 0, 0, 0, 1, 1.1775, 2.758253, -0.104)
-mesh = SubResource("BoxMesh_84le2")
-
-[node name="Minutero" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1229439325]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24, 2.706, -0.11)
-mesh = SubResource("BoxMesh_qsgt2")
-
-[node name="Horario" type="MeshInstance3D" parent="Muebles/ParedPizarron" unique_id=1970652459]
-transform = Transform3D(0.4961384, -0.86824346, 0, 0.86824346, 0.4961384, 0, 0, 0, 1, 1.2049999, 2.67, -0.114)
-mesh = SubResource("BoxMesh_e16lg")
-
 [node name="VentanaInterna" type="Node3D" parent="Muebles" unique_id=400545563]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.96, 0, -2.6)
 
@@ -1001,6 +908,13 @@ modulate = Color(0.82043356, 0.14422375, 0.0681506, 1)
 text = "Enter Password"
 font_size = 12
 outline_size = 0
+
+[node name="ZonaMonitor" type="Area3D" parent="Computadoras/ComputadoraClave" unique_id=748591753]
+script = ExtResource("13_zona")
+
+[node name="Forma" type="CollisionShape3D" parent="Computadoras/ComputadoraClave/ZonaMonitor" unique_id=1965656406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36, 0.06)
+shape = SubResource("BoxShape3D_mon1")
 
 [node name="Comp4" parent="Computadoras" unique_id=859481913 instance=ExtResource("5_ba2fb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0.751, -1.25)
@@ -1269,5 +1183,9 @@ transform = Transform3D(0.9884384, 0.0013168511, 0.15161741, -1.6645062e-06, 0.9
 [node name="MariFreddy" parent="." unique_id=1575803403 instance=ExtResource("11_mari")]
 transform = Transform3D(0.004014199, 0, -0.99999195, 0, 1, 0, 0.99999195, 0, 0.004014199, 15.59103, 0, -7)
 
-[node name="Pruscino" parent="." unique_id=2027226233 instance=ExtResource("12_prus")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -7)
+[node name="PrusBonnie" parent="." unique_id=2027226233 instance=ExtResource("12_prus")]
+transform = Transform3D(0.0023213166, 0, 0.9999973, 0, 1, 0, -0.9999973, 0, 0.0023213166, -3.5482686, 0, 3.4999294)
+
+[node name="PantallaMonitor" parent="." unique_id=48162815 node_paths=PackedStringArray("zona", "jugador") instance=ExtResource("14_pantalla")]
+zona = NodePath("../Computadoras/ComputadoraClave/ZonaMonitor")
+jugador = NodePath("../PosicionJugador/Player")

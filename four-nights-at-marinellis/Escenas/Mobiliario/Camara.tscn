@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ueiao3biakwh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_olh00"]
+
+[node name="Camara" type="Node3D" unique_id=315999207]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2100674781]
+transform = Transform3D(0.050264787, -0.001474956, -0.01945029, 0.0015837159, 0.045834687, -0.002120971, 0.004709542, 0.00032896665, 0.20830554, -0.0016441047, 0.95457304, 0.18742478)
+mesh = SubResource("BoxMesh_olh00")
+
+[node name="PuntoVista" type="Marker3D" parent="." groups=["camaras_seguridad"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
