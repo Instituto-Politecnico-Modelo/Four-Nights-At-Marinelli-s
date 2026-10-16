@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b66derbsbgm0j" path="res://Escenas/GuardiaPlayer.tscn" id="10_guardia"]
 [ext_resource type="PackedScene" uid="uid://g5wl181qhpmd" path="res://Animatronicos/MariFreddy/marifreddy.glb" id="11_mari"]
 [ext_resource type="PackedScene" uid="uid://doxfq0qpmbxp" path="res://Animatronicos/Pruscino/pruscino.glb" id="12_prus"]
+[ext_resource type="PackedScene" uid="uid://ueiao3biakwh" path="res://Escenas/Mobiliario/Camara.tscn" id="13_4o2ti"]
 [ext_resource type="Script" uid="uid://bn0slid4inrtj" path="res://Scripts/Monitor/ZonaMonitor.gd" id="13_zona"]
 [ext_resource type="PackedScene" path="res://Escenas/PantallaMonitor.tscn" id="14_pantalla"]
 
@@ -1172,7 +1173,7 @@ mouse_filter = 2
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.61505044, 0.63674116, -2.65)
 
 [node name="ConexionMapa" parent="." unique_id=1728337464 instance=ExtResource("9_tiago")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.804573, 0, -8.5631275)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9131093, 0.020077348, -8.505028)
 
 [node name="PosicionJugador" type="Node3D" parent="." unique_id=1625463276]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.274, 1.211, -2.286)
@@ -1181,11 +1182,23 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.27
 transform = Transform3D(0.9884384, 0.0013168511, 0.15161741, -1.6645062e-06, 0.99996245, -0.008674177, -0.15162313, 0.008573636, 0.9884013, -0.082993746, 0, -0.5975888)
 
 [node name="MariFreddy" parent="." unique_id=1575803403 instance=ExtResource("11_mari")]
-transform = Transform3D(0.004014199, 0, -0.99999195, 0, 1, 0, 0.99999195, 0, 0.004014199, 15.59103, 0, -7)
+transform = Transform3D(0.5678741, 0.093269385, -0.81781423, -0.074196026, 0.99531513, 0.06199255, 0.81976485, 0.02547457, 0.57213366, 3.1677232, 0.03508818, -6.3142824)
 
 [node name="PrusBonnie" parent="." unique_id=2027226233 instance=ExtResource("12_prus")]
-transform = Transform3D(0.0023213166, 0, 0.9999973, 0, 1, 0, -0.9999973, 0, 0.0023213166, -3.5482686, 0, 3.4999294)
+transform = Transform3D(0.5243426, 0, -0.8515074, 0, 1, 0, 0.8515074, 0, 0.5243426, -4.33235, 0, 3.4999294)
 
 [node name="PantallaMonitor" parent="." unique_id=48162815 node_paths=PackedStringArray("zona", "jugador") instance=ExtResource("14_pantalla")]
 zona = NodePath("../Computadoras/ComputadoraClave/ZonaMonitor")
 jugador = NodePath("../PosicionJugador/Player")
+
+[node name="Camara" parent="." unique_id=315999207 instance=ExtResource("13_4o2ti")]
+transform = Transform3D(1.3778883, 0.7798471, -2.1779633, 0.026652198, 2.5295043, 0.9225824, 2.3132172, -0.493667, 1.2866931, 1.8122532, 2.6001534, -5.420078)
+
+[node name="Camara2" parent="." unique_id=835445416 instance=ExtResource("13_4o2ti")]
+transform = Transform3D(-2.0535655, 0.0031083715, -1.7415857, 0.032394025, 2.692229, -0.03339187, 1.7412872, -0.04641906, -2.0532966, 1.8816853, 2.6261663, -20.413534)
+
+[node name="Camara3" parent="." unique_id=1168582807 instance=ExtResource("13_4o2ti")]
+transform = Transform3D(1.1570641, -1.1441395, 2.145322, 0.03760597, 2.3840034, 1.2511495, -2.4310591, -0.5076759, 1.0404216, 8.83107, 2.6783643, -8.855295)
+
+[node name="Camara4" parent="." unique_id=1217033261 instance=ExtResource("13_4o2ti")]
+transform = Transform3D(1.2769126, 1.4868889, -1.8463259, -0.22618353, 2.1639833, 1.5862778, 2.3597877, -0.59715956, 1.151115, -6.0858417, 2.4215212, 4.784454)

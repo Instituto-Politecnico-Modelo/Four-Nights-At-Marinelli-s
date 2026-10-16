@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" path="res://Scripts/Monitor/PantallaMonitor.gd" id="1_pantalla"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gris"]
+bg_color = Color(0.55, 0.55, 0.55, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gris_sobre"]
+bg_color = Color(0.7, 0.7, 0.7, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gris_presionado"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+
 [node name="PantallaMonitor" type="CanvasLayer"]
 visible = false
 layer = 10
@@ -81,6 +90,116 @@ text = "Archivo 2"
 custom_minimum_size = Vector2(150, 130)
 layout_mode = 2
 text = "Archivo 3"
+
+[node name="Camaras" type="Button" parent="Pantalla/Escritorio/Iconos"]
+custom_minimum_size = Vector2(150, 130)
+layout_mode = 2
+text = "Camaras"
+
+[node name="Camaras" type="HBoxContainer" parent="Pantalla"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 56.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Vista" type="SubViewportContainer" parent="Pantalla/Camaras"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="Mundo" type="SubViewport" parent="Pantalla/Camaras/Vista"]
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 0
+
+[node name="Camara" type="Camera3D" parent="Pantalla/Camaras/Vista/Mundo"]
+current = true
+fov = 75.0
+
+[node name="Lateral" type="VBoxContainer" parent="Pantalla/Camaras"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Cruz" type="GridContainer" parent="Pantalla/Camaras/Lateral"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 3
+
+[node name="Espacio1" type="Control" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+
+[node name="Norte" type="Button" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gris")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gris_sobre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gris_presionado")
+text = "CAM 1"
+
+[node name="Espacio2" type="Control" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+
+[node name="Oeste" type="Button" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gris")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gris_sobre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gris_presionado")
+text = "CAM 2"
+
+[node name="Espacio3" type="Control" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+
+[node name="Este" type="Button" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gris")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gris_sobre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gris_presionado")
+text = "CAM 4"
+
+[node name="Espacio4" type="Control" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+
+[node name="Sur" type="Button" parent="Pantalla/Camaras/Lateral/Cruz"]
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_gris")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gris_sobre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gris_presionado")
+text = "CAM 3"
+
+[node name="Volver" type="Button" parent="Pantalla/Camaras/Lateral"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Volver"
 
 [node name="Salir" type="Button" parent="Pantalla"]
 layout_mode = 1
