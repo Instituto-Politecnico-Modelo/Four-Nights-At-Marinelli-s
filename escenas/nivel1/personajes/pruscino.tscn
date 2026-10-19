@@ -13,6 +13,8 @@ radius = 150.0
 
 [node name="Pruscino" type="CharacterBody2D" unique_id=350537431]
 scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 7
 motion_mode = 1
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2003037170]
