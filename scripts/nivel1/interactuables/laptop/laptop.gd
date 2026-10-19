@@ -1,7 +1,5 @@
 extends Node2D
 class_name Laptop
-## Laptop
-## Guarda el desbloqueo del intento actual y permite releer el archivo.
 
 @export var contrasenia_correcta: String = "1409"
 @export var archivo_secreto: PistaResource = preload("res://resources/nivel1/pistas/archivo_secreto.tres")

@@ -37,7 +37,6 @@ func _on_charlie_escondido(esta_escondido: bool) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# Se procesa antes de los controles de texto, incluso durante la pausa.
 	if event.is_action_pressed("reiniciar_nivel"):
 		get_viewport().set_input_as_handled()
 		reiniciar()
@@ -47,7 +46,6 @@ func reiniciar() -> void:
 	if _reiniciando or get_tree().current_scene == null:
 		return
 	_reiniciando = true
-	# La captura puede originarse en fisica; recargar fuera de ese callback.
 	_recargar_nivel.call_deferred()
 
 

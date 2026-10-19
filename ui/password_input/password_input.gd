@@ -1,9 +1,5 @@
 extends CanvasLayer
 class_name PasswordInput
-## PasswordInput
-## Input de contrasenia para la laptop de Pruscino. Pausa el juego mientras
-## esta abierto. Enter envia el intento; la accion "interactuar" (E) cierra
-## el popup sin resolver el puzle.
 
 @onready var panel: Panel = $Panel
 @onready var campo: LineEdit = $Panel/VBoxContainer/Campo

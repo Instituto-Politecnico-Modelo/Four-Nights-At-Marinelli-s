@@ -1,7 +1,5 @@
 extends Node
 class_name PatrolComponent
-## Patrulla estatica en el orden de los Marker2D de Puntos.
-## Las posiciones se fijan al iniciar: no deben seguir al personaje.
 
 @export var cuerpo: CharacterBody2D
 @export var sprite: Sprite2D
@@ -29,7 +27,6 @@ func _ready() -> void:
 
 	var contenedor := cuerpo.get_node_or_null("Puntos") as Node2D
 	if contenedor != null:
-		# Mantener tambien los marcadores de depuracion quietos en el mundo.
 		var transformacion_inicial := contenedor.global_transform
 		contenedor.top_level = true
 		contenedor.global_transform = transformacion_inicial
@@ -57,7 +54,6 @@ func _physics_process(delta: float) -> void:
 	var distancia := desplazamiento.length()
 	if distancia > 0.01:
 		var direccion := desplazamiento / distancia
-		# No pasarse del objetivo ni cortar esquinas por un radio de llegada.
 		cuerpo.velocity = direccion * minf(velocidad, distancia / delta)
 		cuerpo.move_and_slide()
 		direccion_mirada = direccion

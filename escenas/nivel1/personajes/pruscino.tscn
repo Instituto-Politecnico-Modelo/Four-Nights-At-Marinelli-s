@@ -33,85 +33,84 @@ script = ExtResource("2_patrol")
 textura_derecha = ExtResource("1_derecha")
 textura_izquierda = ExtResource("1b_izquierda")
 
-[node name="DetectionComponent" type="Node" parent="." unique_id=1531801082]
+[node name="DetectionComponent" type="Node2D" parent="." unique_id=1531801082]
 script = ExtResource("3_detection")
 
-[node name="AreaCaptura" type="Area2D" parent="."]
+[node name="AreaCaptura" type="Area2D" parent="." unique_id=480914680]
 collision_layer = 0
-collision_mask = 1
 monitorable = false
 
-[node name="Colision" type="CollisionShape2D" parent="AreaCaptura"]
+[node name="Colision" type="CollisionShape2D" parent="AreaCaptura" unique_id=294618282]
 shape = SubResource("CircleShape2D_captura")
 
-[node name="Puntos" type="Node2D" parent="."]
+[node name="Puntos" type="Node2D" parent="." unique_id=846851198]
 scale = Vector2(2, 2)
 
-[node name="Punto1" type="Marker2D" parent="Puntos"]
+[node name="Punto1" type="Marker2D" parent="Puntos" unique_id=671513389]
 position = Vector2(-79, 0)
 
-[node name="Punto2" type="Marker2D" parent="Puntos"]
+[node name="Punto2" type="Marker2D" parent="Puntos" unique_id=1636826454]
 position = Vector2(-119, 0)
 
-[node name="Punto3" type="Marker2D" parent="Puntos"]
+[node name="Punto3" type="Marker2D" parent="Puntos" unique_id=1497930421]
 position = Vector2(-119, -79)
 
-[node name="Punto4" type="Marker2D" parent="Puntos"]
+[node name="Punto4" type="Marker2D" parent="Puntos" unique_id=879927778]
 position = Vector2(-119, -159)
 
-[node name="Punto5" type="Marker2D" parent="Puntos"]
+[node name="Punto5" type="Marker2D" parent="Puntos" unique_id=2122970857]
 position = Vector2(-119, -239)
 
-[node name="Punto6" type="Marker2D" parent="Puntos"]
+[node name="Punto6" type="Marker2D" parent="Puntos" unique_id=859181245]
 position = Vector2(-119, -319)
 
-[node name="Punto7" type="Marker2D" parent="Puntos"]
+[node name="Punto7" type="Marker2D" parent="Puntos" unique_id=1792199602]
 position = Vector2(-69, -319)
 
-[node name="Punto8" type="Marker2D" parent="Puntos"]
+[node name="Punto8" type="Marker2D" parent="Puntos" unique_id=777620179]
 position = Vector2(-19, -319)
 
-[node name="Punto9" type="Marker2D" parent="Puntos"]
+[node name="Punto9" type="Marker2D" parent="Puntos" unique_id=876210438]
 position = Vector2(-69, -319)
 
-[node name="Punto10" type="Marker2D" parent="Puntos"]
+[node name="Punto10" type="Marker2D" parent="Puntos" unique_id=337670735]
 position = Vector2(-119, -319)
 
-[node name="Punto11" type="Marker2D" parent="Puntos"]
+[node name="Punto11" type="Marker2D" parent="Puntos" unique_id=1634780350]
 position = Vector2(-119, -239)
 
-[node name="Punto12" type="Marker2D" parent="Puntos"]
+[node name="Punto12" type="Marker2D" parent="Puntos" unique_id=610053459]
 position = Vector2(-119, -159)
 
-[node name="Punto13" type="Marker2D" parent="Puntos"]
+[node name="Punto13" type="Marker2D" parent="Puntos" unique_id=173242113]
 position = Vector2(-19, -159)
 
-[node name="Punto14" type="Marker2D" parent="Puntos"]
+[node name="Punto14" type="Marker2D" parent="Puntos" unique_id=525506365]
 position = Vector2(81, -159)
 
-[node name="Punto15" type="Marker2D" parent="Puntos"]
+[node name="Punto15" type="Marker2D" parent="Puntos" unique_id=1582969018]
 position = Vector2(181, -159)
 
-[node name="Punto16" type="Marker2D" parent="Puntos"]
+[node name="Punto16" type="Marker2D" parent="Puntos" unique_id=1733489672]
 position = Vector2(271, -159)
 
-[node name="Punto17" type="Marker2D" parent="Puntos"]
+[node name="Punto17" type="Marker2D" parent="Puntos" unique_id=82194353]
 position = Vector2(291, -129)
 
-[node name="Punto18" type="Marker2D" parent="Puntos"]
+[node name="Punto18" type="Marker2D" parent="Puntos" unique_id=1781052402]
 position = Vector2(291, -69)
 
-[node name="Punto19" type="Marker2D" parent="Puntos"]
+[node name="Punto19" type="Marker2D" parent="Puntos" unique_id=1715286346]
 position = Vector2(291, -9)
 
-[node name="Punto20" type="Marker2D" parent="Puntos"]
+[node name="Punto20" type="Marker2D" parent="Puntos" unique_id=385765494]
 position = Vector2(201, -9)
 
-[node name="Punto21" type="Marker2D" parent="Puntos"]
+[node name="Punto21" type="Marker2D" parent="Puntos" unique_id=274549335]
 position = Vector2(101, -9)
 
-[node name="Punto22" type="Marker2D" parent="Puntos"]
+[node name="Punto22" type="Marker2D" parent="Puntos" unique_id=846080821]
 position = Vector2(1, -9)
 
-[node name="Punto23" type="Marker2D" parent="Puntos"]
+[node name="Punto23" type="Marker2D" parent="Puntos" unique_id=861207461]
 position = Vector2(-79, -9)
