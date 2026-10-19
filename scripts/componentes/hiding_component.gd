@@ -1,13 +1,5 @@
 extends Node
 class_name HidingComponent
-## HidingComponent
-## Permite a Charlie esconderse/salir con una tecla propia ("esconderse"),
-## siempre que una Computadora este actualmente enfocada (en rango del
-## InteractorComponent) - los escondites de la Fase 1 son los mismos
-## escritorios que tienen las pistas. No depende de la accion generica
-## "interactuar". Mientras esta escondido: el sprite se oculta y el
-## MovementComponent hermano deja de procesar fisica, asi Charlie queda
-## inmovil hasta salir.
 
 @export var cuerpo: CharacterBody2D
 @export var sprite: Sprite2D

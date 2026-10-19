@@ -1,8 +1,5 @@
 extends Node2D
 class_name Computadora
-## Computadora
-## Objeto investigable de la Fase 1: al interactuar, revela su PistaResource
-## asignada emitiendo la senial correspondiente por el SignalBus.
 
 @export var pista: PistaResource
 

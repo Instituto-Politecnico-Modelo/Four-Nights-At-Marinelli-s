@@ -60,6 +60,13 @@ reiniciar_nivel={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Pared"
+2d_physics/layer_2="Mueble"
+2d_physics/layer_3="Computadora"
+2d_physics/layer_4="Personaje"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

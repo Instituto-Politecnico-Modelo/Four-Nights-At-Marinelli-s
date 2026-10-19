@@ -1,8 +1,5 @@
 extends Area2D
 class_name InteractorComponent
-## InteractorComponent
-## Detecta InteractableComponent cercanos, mantiene el mas cercano como
-## "enfocado" y dispara la interaccion al presionar la accion "interactuar".
 
 var _en_rango: Array[InteractableComponent] = []
 var _enfocado: InteractableComponent = null

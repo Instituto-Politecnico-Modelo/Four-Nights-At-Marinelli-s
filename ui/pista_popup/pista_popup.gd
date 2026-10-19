@@ -1,10 +1,5 @@
 extends CanvasLayer
 class_name PistaPopup
-## PistaPopup
-## Muestra el texto completo de una pista descubierta y pausa el juego
-## por completo (get_tree().paused) mientras esta abierto, para que Charlie
-## y todo lo demas se congele. El jugador lo cierra manualmente presionando
-## la accion "interactuar" mientras esta visible.
 
 @onready var panel: Panel = $Panel
 @onready var etiqueta: Label = $Panel/Etiqueta

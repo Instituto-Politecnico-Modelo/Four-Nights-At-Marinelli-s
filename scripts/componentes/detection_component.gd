@@ -1,20 +1,19 @@
-extends Node
+extends Node2D
 class_name DetectionComponent
-## DetectionComponent
-## Detecta por proximidad con AreaCaptura o por cono de vision (rango + angulo respecto a la
-## direccion en la que Pruscino esta mirando, segun PatrolComponent) y
-## confirma con un raycast que no haya nada en el medio (linea de vision
-## libre). Si Charlie esta escondido (GameManager.charlie_escondido), nunca
-## lo detecta. Al detectarlo, emite charlie_descubierto_por y charlie_atrapado
-## una unica vez; GameManager y la UI gestionan la captura.
 
 @export var cuerpo: CharacterBody2D
 @export var patrulla: PatrolComponent
 @export var rango_vision: float = 260.0
 @export var angulo_vision_grados: float = 100.0
+@export var _area_captura: Area2D
+@export var mostrar_cono: bool = true
+@export var color_borde: Color = Color.RED
+@export var color_relleno: Color = Color(1.0, 0.0, 0.0, 0.2)
+@export var segmentos_arco: int = 16
 
 var _ya_detecto: bool = false
-var _area_captura: Area2D
+var _medio_angulo_rad: float
+var _charlie: Node2D
 
 
 func _ready() -> void:
@@ -24,41 +23,52 @@ func _ready() -> void:
 		patrulla = cuerpo.get_node_or_null("PatrolComponent") as PatrolComponent
 	if cuerpo != null:
 		_area_captura = cuerpo.get_node_or_null("AreaCaptura") as Area2D
+	_charlie = get_tree().get_first_node_in_group("charlie") as Node2D
+	_medio_angulo_rad = deg_to_rad(angulo_vision_grados / 2.0)
 
 
 func _physics_process(_delta: float) -> void:
-	if _ya_detecto or cuerpo == null:
+	if mostrar_cono:
+		queue_redraw()
+
+	if _ya_detecto or cuerpo == null or _charlie == null:
 		return
 
 	if GameManager.charlie_escondido:
 		return
 
-	var charlie: Node2D = get_tree().get_first_node_in_group("charlie") as Node2D
-	if charlie == null:
-		return
-
-	# Reevaluar mientras permanece dentro: salir del escondite tambien captura.
-	if _area_captura != null and _area_captura.overlaps_body(charlie):
-		if _hay_linea_de_vision(charlie):
+	if _area_captura != null and _area_captura.overlaps_body(_charlie):
+		if _hay_linea_de_vision(_charlie):
 			_capturar()
 		return
 
-	var hacia_charlie: Vector2 = charlie.global_position - cuerpo.global_position
-	var distancia: float = hacia_charlie.length()
+	if is_in_cone() and _hay_linea_de_vision(_charlie):
+		_capturar()
 
-	if distancia > rango_vision:
+
+func _direccion() -> Vector2:
+	return patrulla.direccion_mirada if patrulla != null else Vector2.RIGHT
+
+
+func is_in_cone() -> bool:
+	var hacia_charlie: Vector2 = _charlie.global_position - cuerpo.global_position
+	if hacia_charlie.length() > rango_vision:
+		return false
+	return abs(_direccion().angle_to(hacia_charlie)) <= _medio_angulo_rad
+
+
+func _draw() -> void:
+	if not mostrar_cono:
 		return
-
-	var mirada: Vector2 = patrulla.direccion_mirada if patrulla != null else Vector2.RIGHT
-	var angulo: float = rad_to_deg(mirada.angle_to(hacia_charlie))
-
-	if abs(angulo) > angulo_vision_grados * 0.5:
-		return
-
-	if not _hay_linea_de_vision(charlie):
-		return
-
-	_capturar()
+	var mirada: Vector2 = _direccion() * rango_vision
+	var puntos := PackedVector2Array([Vector2.ZERO])
+	for i in segmentos_arco + 1:
+		var t: float = lerpf(-_medio_angulo_rad, _medio_angulo_rad, float(i) / segmentos_arco)
+		puntos.append(to_local(global_position + mirada.rotated(t)))
+	draw_colored_polygon(puntos, color_relleno)
+	draw_line(Vector2.ZERO, puntos[1], color_borde, 3.0)
+	draw_line(Vector2.ZERO, puntos[puntos.size() - 1], color_borde, 3.0)
+	draw_polyline(puntos.slice(1), color_borde, 2.0)
 
 
 func _capturar() -> void:

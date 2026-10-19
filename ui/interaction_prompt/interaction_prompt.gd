@@ -1,9 +1,5 @@
 extends CanvasLayer
 class_name InteractionPrompt
-## InteractionPrompt
-## Muestra un prompt en pantalla cuando Charlie enfoca un interactuable,
-## y confirma por consola cuando se dispara la interaccion (util para pruebas
-## hasta que existan reacciones especificas por objeto).
 
 @onready var etiqueta: Label = $Etiqueta
 
