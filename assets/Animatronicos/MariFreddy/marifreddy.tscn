@@ -2,10 +2,15 @@
 
 [ext_resource type="PackedScene" path="res://modelo3d/marifreddy.glb" id="1_modelo"]
 [ext_resource type="Script" path="res://scripts/marifreddy.gd" id="2_marifreddy"]
+[ext_resource type="AudioStream" path="res://jumpscare.mp3" id="3_jumpscare"]
 
-[node name="MariFreddy" type="Node3D" node_paths=PackedStringArray("reproductor")]
+[node name="MariFreddy" type="Node3D" node_paths=PackedStringArray("reproductor", "sonido_jumpscare")]
 script = ExtResource("2_marifreddy")
 reproductor = NodePath("Modelo/AnimationPlayer")
+sonido_jumpscare = NodePath("SonidoJumpscare")
+
+[node name="SonidoJumpscare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jumpscare")
 
 [node name="Modelo" parent="." instance=ExtResource("1_modelo")]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)

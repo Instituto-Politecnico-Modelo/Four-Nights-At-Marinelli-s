@@ -12,6 +12,8 @@ signal jumpscare_solicitado
 @export var carrera_minima: float = 2.5
 
 var puerta: ComponenteBisagra
+var reloj: ComponenteRelojNoche
+var turnos: ComponenteTurnosAtaque
 var corriendo: bool = false
 var activo: bool = true
 var visitas: int = 0
@@ -20,11 +22,15 @@ var tiempo: float = 0.0
 
 func _ready() -> void:
 	puerta = get_tree().get_first_node_in_group("puerta_orientacion")
+	reloj = get_tree().get_first_node_in_group("reloj_noche") as ComponenteRelojNoche
+	turnos = get_tree().get_first_node_in_group("turnos_ataque") as ComponenteTurnosAtaque
+	if reloj != null:
+		reloj.noche_terminada.connect(_detener)
 	tiempo = espera_inicial
 
 
 func _process(delta: float) -> void:
-	if not activo:
+	if not activo or (reloj != null and reloj.terminada) or (turnos != null and turnos.bloqueado):
 		return
 
 	tiempo -= delta
@@ -38,6 +44,8 @@ func _process(delta: float) -> void:
 
 
 func empezar_carrera() -> void:
+	if turnos != null and not turnos.solicitar(self):
+		return
 	corriendo = true
 	tiempo = maxf(carrera_inicial - reduccion_carrera * visitas, carrera_minima)
 	sonido_carrera.play()
@@ -51,3 +59,13 @@ func terminar_carrera() -> void:
 	if not puerta.cerrada:
 		activo = false
 		jumpscare_solicitado.emit()
+	elif turnos != null:
+		turnos.liberar(self)
+
+
+func _detener() -> void:
+	activo = false
+	corriendo = false
+	sonido_carrera.stop()
+	if turnos != null:
+		turnos.liberar(self)

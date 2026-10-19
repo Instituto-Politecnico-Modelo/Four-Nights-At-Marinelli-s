@@ -3,6 +3,7 @@ extends Node
 
 signal hora_cambiada(hora: int)
 signal noche_terminada
+signal tiempo_restaurado
 
 @export var segundos_por_hora: float = 90.0
 @export var horas_totales: int = 6
@@ -32,6 +33,7 @@ func restaurar(hora_inicio: int) -> void:
 	if hora >= horas_totales:
 		terminada = true
 	hora_cambiada.emit(hora)
+	tiempo_restaurado.emit()
 
 
 func hora_reloj() -> int:

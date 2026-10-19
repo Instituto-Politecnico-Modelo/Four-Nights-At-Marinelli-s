@@ -1,0 +1,77 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/computadora/programa_mantenimiento.gd" id="1_panel"]
+
+[sub_resource type="StyleBoxFlat" id="fondo"]
+bg_color = Color(0.035, 0.055, 0.045, 1)
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+
+[sub_resource type="Theme" id="tema_panel"]
+Label/colors/font_color = Color(0.8, 0.95, 0.85, 1)
+
+[node name="ProgramaMantenimiento" type="Control" node_paths=PackedStringArray("lista", "aviso", "progreso", "detalle", "boton_todos", "boton_interrumpir")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("tema_panel")
+script = ExtResource("1_panel")
+lista = NodePath("Fondo/Contenido/Sistemas")
+aviso = NodePath("Fondo/Contenido/Aviso")
+progreso = NodePath("Fondo/Contenido/Progreso")
+detalle = NodePath("Fondo/Contenido/Detalle")
+boton_todos = NodePath("Fondo/Contenido/ReiniciarTodos")
+boton_interrumpir = NodePath("Fondo/Contenido/Interrumpir")
+
+[node name="Fondo" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("fondo")
+
+[node name="Contenido" type="VBoxContainer" parent="Fondo"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Titulo" type="Label" parent="Fondo/Contenido"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "PANEL DE MANTENIMIENTO"
+
+[node name="Aviso" type="Label" parent="Fondo/Contenido"]
+layout_mode = 2
+text = "Comprobando sistemas..."
+autowrap_mode = 3
+
+[node name="Sistemas" type="VBoxContainer" parent="Fondo/Contenido"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ReiniciarTodos" type="Button" parent="Fondo/Contenido"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Reiniciar sistemas afectados · 12 s"
+
+[node name="Progreso" type="ProgressBar" parent="Fondo/Contenido"]
+visible = false
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Detalle" type="Label" parent="Fondo/Contenido"]
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+
+[node name="Interrumpir" type="Button" parent="Fondo/Contenido"]
+visible = false
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+text = "Interrumpir reinicio"

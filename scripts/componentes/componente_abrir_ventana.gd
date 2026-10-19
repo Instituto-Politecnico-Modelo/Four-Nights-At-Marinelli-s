@@ -18,6 +18,9 @@ func _on_boton_input(event: InputEvent) -> void:
 		return
 	if doble_click and not event.double_click:
 		return
+	var reinicio: ComponenteReinicioMantenimiento = get_tree().get_first_node_in_group("reinicio_mantenimiento") as ComponenteReinicioMantenimiento
+	if reinicio != null and reinicio.activo():
+		return
 
 	ventana.show()
 	ventana.move_to_front()

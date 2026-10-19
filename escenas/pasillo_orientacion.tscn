@@ -15,6 +15,12 @@
 [ext_resource type="Script" uid="uid://rndqu4k5h3ao" path="res://scripts/componentes/componente_checkpoint.gd" id="13_checkpoint"]
 [ext_resource type="PackedScene" path="res://escenas/animatronicos/pruscino_encuentro.tscn" id="14_encuentro_pruscino"]
 [ext_resource type="PackedScene" uid="uid://bexvguh8gctbe" path="res://escenas/animatronicos/marifreddy_encuentro.tscn" id="15_encuentro_marifreddy"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_sistema_mantenimiento.gd" id="16_sistema"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_fallas_mantenimiento.gd" id="17_fallas"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_reinicio_mantenimiento.gd" id="18_reinicio"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_iluminacion_mantenimiento.gd" id="19_iluminacion"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_aviso_mantenimiento.gd" id="20_aviso"]
+[ext_resource type="Script" path="res://scripts/componentes/componente_turnos_ataque.gd" id="21_turnos"]
 
 [sub_resource type="Environment" id="entorno"]
 background_mode = 1
@@ -674,6 +680,44 @@ shader_parameter/grano = 0.05
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=556195218]
 environment = SubResource("entorno")
+
+[node name="Mantenimiento" type="Node" parent="."]
+
+[node name="Camaras" type="Node" parent="Mantenimiento" groups=["sistema_camaras"]]
+script = ExtResource("16_sistema")
+nombre = "Cámaras"
+consecuencia = "Sin transmisión. No podés localizar a los animatrónicos."
+duracion_reinicio = 5.0
+peso_falla = 2.0
+
+[node name="Servidor" type="Node" parent="Mantenimiento" groups=["sistema_servidor"]]
+script = ExtResource("16_sistema")
+nombre = "Servidor"
+consecuencia = "No podés cambiar de cámara hasta recuperar la conexión."
+duracion_reinicio = 7.0
+
+[node name="Luces" type="Node" parent="Mantenimiento"]
+script = ExtResource("16_sistema")
+nombre = "Luces"
+consecuencia = "Iluminación de oficina y pasillos fuera de servicio."
+duracion_reinicio = 6.0
+
+[node name="Reinicio" type="Node" parent="Mantenimiento" node_paths=PackedStringArray("sistemas", "reloj") groups=["reinicio_mantenimiento"]]
+script = ExtResource("18_reinicio")
+sistemas = [NodePath("../Camaras"), NodePath("../Servidor"), NodePath("../Luces")]
+reloj = NodePath("../../RelojNoche")
+
+[node name="Fallas" type="Node" parent="Mantenimiento" node_paths=PackedStringArray("sistemas", "reloj")]
+script = ExtResource("17_fallas")
+sistemas = [NodePath("../Camaras"), NodePath("../Servidor"), NodePath("../Luces")]
+reloj = NodePath("../../RelojNoche")
+
+[node name="Iluminacion" type="Node" parent="Mantenimiento" node_paths=PackedStringArray("sistema", "luces", "tubos", "parpadeos")]
+script = ExtResource("19_iluminacion")
+sistema = NodePath("../Luces")
+luces = [NodePath("../../Oficina/LuzOficina"), NodePath("../../Iluminacion/Luz1"), NodePath("../../Iluminacion/Luz2"), NodePath("../../Iluminacion/Luz3"), NodePath("../../Iluminacion/Luz4")]
+tubos = [NodePath("../../Oficina/TuboOficina"), NodePath("../../Iluminacion/Tubo1"), NodePath("../../Iluminacion/Tubo2"), NodePath("../../Iluminacion/Tubo3"), NodePath("../../Iluminacion/Tubo4")]
+parpadeos = [NodePath("../../Oficina/ParpadeoOficina"), NodePath("../../Iluminacion/ParpadeoLuz2")]
 
 [node name="Estructura" type="Node3D" parent="." unique_id=998335089]
 
@@ -1775,6 +1819,23 @@ script = ExtResource("11_reloj_noche")
 [node name="HUDNoche" type="CanvasLayer" parent="." unique_id=1082517639]
 layer = 2
 
+[node name="AvisoMantenimiento" type="Label" parent="HUDNoche"]
+visible = false
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 650.0
+offset_bottom = 90.0
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0.4, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+
+[node name="MostrarMantenimiento" type="Node" parent="HUDNoche" node_paths=PackedStringArray("reinicio", "etiqueta")]
+script = ExtResource("20_aviso")
+reinicio = NodePath("../../Mantenimiento/Reinicio")
+etiqueta = NodePath("../AvisoMantenimiento")
+
 [node name="Hora" type="Label" parent="HUDNoche" unique_id=189990162]
 anchors_preset = 1
 anchor_left = 1.0
@@ -1815,6 +1876,10 @@ reloj = NodePath("../../RelojNoche")
 etiqueta = NodePath("../Hora")
 
 [node name="EncuentroPruscino" parent="." unique_id=1700942146 instance=ExtResource("14_encuentro_pruscino")]
+
+[node name="TurnosAtaque" type="Node" parent="." node_paths=PackedStringArray("reloj") groups=["turnos_ataque"]]
+script = ExtResource("21_turnos")
+reloj = NodePath("../RelojNoche")
 
 [node name="Checkpoint" type="Node" parent="." unique_id=102137523 node_paths=PackedStringArray("reloj", "etiqueta_noche")]
 script = ExtResource("13_checkpoint")

@@ -9,6 +9,8 @@ signal jumpscare_solicitado
 @export var espera_minima: float = 4.0
 
 var persiana: ComponentePersiana
+var reloj: ComponenteRelojNoche
+var turnos: ComponenteTurnosAtaque
 var vigilando: bool = false
 var visitas: int = 0
 var tiempo: float = 0.0
@@ -16,11 +18,13 @@ var tiempo: float = 0.0
 
 func _ready() -> void:
 	persiana = get_tree().get_first_node_in_group("persiana_ventana")
+	reloj = get_tree().get_first_node_in_group("reloj_noche") as ComponenteRelojNoche
+	turnos = get_tree().get_first_node_in_group("turnos_ataque") as ComponenteTurnosAtaque
 	estados.estado_cambiado.connect(_al_cambiar_estado)
 
 
 func _process(delta: float) -> void:
-	if not vigilando:
+	if not vigilando or (reloj != null and reloj.terminada) or (turnos != null and turnos.bloqueado):
 		return
 
 	tiempo -= delta

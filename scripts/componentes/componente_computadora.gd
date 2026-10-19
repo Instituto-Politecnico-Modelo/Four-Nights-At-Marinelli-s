@@ -9,8 +9,12 @@ var presionado_antes: bool = false
 
 
 func _ready() -> void:
+	add_to_group("computadoras")
 	escritorio.hide()
 	escritorio.apagado.connect(cerrar)
+	var reloj: ComponenteRelojNoche = get_tree().get_first_node_in_group("reloj_noche") as ComponenteRelojNoche
+	if reloj != null:
+		reloj.noche_terminada.connect(_al_terminar_noche)
 
 
 func _process(_delta: float) -> void:
@@ -26,6 +30,14 @@ func abrir() -> void:
 
 
 func cerrar() -> void:
+	var reinicio: ComponenteReinicioMantenimiento = get_tree().get_first_node_in_group("reinicio_mantenimiento") as ComponenteReinicioMantenimiento
+	if reinicio != null:
+		reinicio.interrumpir()
 	escritorio.hide()
 	jugador.process_mode = Node.PROCESS_MODE_INHERIT
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _al_terminar_noche() -> void:
+	if escritorio.visible:
+		cerrar()
