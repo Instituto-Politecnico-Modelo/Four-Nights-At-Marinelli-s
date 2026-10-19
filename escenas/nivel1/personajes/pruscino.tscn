@@ -47,52 +47,52 @@ shape = SubResource("CircleShape2D_captura")
 scale = Vector2(2, 2)
 
 [node name="Punto1" type="Marker2D" parent="Puntos" unique_id=671513389]
-position = Vector2(-79, 0)
+position = Vector2(-79, -9)
 
 [node name="Punto2" type="Marker2D" parent="Puntos" unique_id=1636826454]
-position = Vector2(-119, 0)
+position = Vector2(-119, -9)
 
 [node name="Punto3" type="Marker2D" parent="Puntos" unique_id=1497930421]
 position = Vector2(-119, -79)
 
 [node name="Punto4" type="Marker2D" parent="Puntos" unique_id=879927778]
-position = Vector2(-119, -159)
+position = Vector2(-175, -176)
 
 [node name="Punto5" type="Marker2D" parent="Puntos" unique_id=2122970857]
-position = Vector2(-119, -239)
+position = Vector2(-176, -285)
 
 [node name="Punto6" type="Marker2D" parent="Puntos" unique_id=859181245]
-position = Vector2(-119, -319)
+position = Vector2(-173, -354)
 
 [node name="Punto7" type="Marker2D" parent="Puntos" unique_id=1792199602]
-position = Vector2(-69, -319)
+position = Vector2(-113, -354)
 
 [node name="Punto8" type="Marker2D" parent="Puntos" unique_id=777620179]
-position = Vector2(-19, -319)
+position = Vector2(-50, -353)
 
 [node name="Punto9" type="Marker2D" parent="Puntos" unique_id=876210438]
-position = Vector2(-69, -319)
+position = Vector2(-113, -354)
 
 [node name="Punto10" type="Marker2D" parent="Puntos" unique_id=337670735]
-position = Vector2(-119, -319)
+position = Vector2(-173, -354)
 
 [node name="Punto11" type="Marker2D" parent="Puntos" unique_id=1634780350]
-position = Vector2(-119, -239)
+position = Vector2(-176, -245)
 
 [node name="Punto12" type="Marker2D" parent="Puntos" unique_id=610053459]
-position = Vector2(-119, -159)
+position = Vector2(-119, -176)
 
 [node name="Punto13" type="Marker2D" parent="Puntos" unique_id=173242113]
-position = Vector2(-19, -159)
+position = Vector2(-19, -176)
 
 [node name="Punto14" type="Marker2D" parent="Puntos" unique_id=525506365]
-position = Vector2(81, -159)
+position = Vector2(81, -176)
 
 [node name="Punto15" type="Marker2D" parent="Puntos" unique_id=1582969018]
-position = Vector2(181, -159)
+position = Vector2(181, -176)
 
 [node name="Punto16" type="Marker2D" parent="Puntos" unique_id=1733489672]
-position = Vector2(271, -159)
+position = Vector2(248, -175)
 
 [node name="Punto17" type="Marker2D" parent="Puntos" unique_id=82194353]
 position = Vector2(291, -129)
