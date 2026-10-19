@@ -4,13 +4,13 @@
 [ext_resource type="Theme" path="res://escenas/computadora/tema_xp.tres" id="2_tema"]
 [ext_resource type="Texture2D" path="res://assets/xp/bliss.svg" id="3_bliss"]
 [ext_resource type="Texture2D" path="res://assets/xp/icono_camara.svg" id="4_icono_camara"]
-[ext_resource type="Texture2D" path="res://assets/xp/icono_puzzle.svg" id="5_icono_puzzle"]
+[ext_resource type="Texture2D" path="res://assets/xp/icono_mantenimiento.svg" id="5_icono_mantenimiento"]
 [ext_resource type="Texture2D" path="res://assets/xp/logo_windows.svg" id="6_logo"]
 [ext_resource type="Texture2D" path="res://assets/xp/usuario.svg" id="7_usuario"]
 [ext_resource type="Texture2D" path="res://assets/xp/apagar.svg" id="8_apagar"]
 [ext_resource type="PackedScene" path="res://escenas/computadora/ventana_xp.tscn" id="9_ventana"]
 [ext_resource type="PackedScene" path="res://escenas/computadora/programa_camaras.tscn" id="10_prog_camaras"]
-[ext_resource type="PackedScene" path="res://escenas/computadora/programa_puzzle.tscn" id="11_prog_puzzle"]
+[ext_resource type="PackedScene" path="res://escenas/computadora/programa_mantenimiento.tscn" id="11_mantenimiento"]
 [ext_resource type="Script" path="res://scripts/componentes/componente_abrir_ventana.gd" id="12_abrir"]
 [ext_resource type="Script" path="res://scripts/componentes/componente_reloj.gd" id="13_reloj"]
 
@@ -81,7 +81,7 @@ border_color = Color(0.04, 0.26, 0.75, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 
-[node name="EscritorioXP" type="Control" node_paths=PackedStringArray("fondo", "menu_inicio", "boton_inicio", "boton_apagar")]
+[node name="EscritorioXP" type="Control" node_paths=PackedStringArray("fondo", "menu_inicio", "boton_inicio", "boton_apagar", "ventana_mantenimiento", "bloqueo_mantenimiento")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +94,8 @@ fondo = NodePath("Fondo")
 menu_inicio = NodePath("MenuInicio")
 boton_inicio = NodePath("BarraTareas/BotonInicio")
 boton_apagar = NodePath("MenuInicio/BotonApagar")
+ventana_mantenimiento = NodePath("Ventanas/VentanaMantenimiento")
+bloqueo_mantenimiento = NodePath("Ventanas/BloqueoMantenimiento")
 
 [node name="Fondo" type="TextureRect" parent="."]
 layout_mode = 1
@@ -130,7 +132,7 @@ flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
 
-[node name="IconoPuzzle" type="Button" parent="Iconos"]
+[node name="IconoMantenimiento" type="Button" parent="Iconos"]
 custom_minimum_size = Vector2(90, 84)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -139,8 +141,8 @@ theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.7)
 theme_override_constants/outline_size = 3
-text = "Puzzle"
-icon = ExtResource("5_icono_puzzle")
+text = "Mantenimiento"
+icon = ExtResource("5_icono_mantenimiento")
 flat = true
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -164,15 +166,25 @@ offset_bottom = 520.0
 titulo = "Cámaras de seguridad"
 programa = ExtResource("10_prog_camaras")
 
-[node name="VentanaPuzzle" parent="Ventanas" instance=ExtResource("9_ventana")]
+[node name="BloqueoMantenimiento" type="ColorRect" parent="Ventanas"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015, 0.025, 0.02, 1)
+
+[node name="VentanaMantenimiento" parent="Ventanas" instance=ExtResource("9_ventana")]
 visible = false
 layout_mode = 0
-offset_left = 360.0
-offset_top = 80.0
-offset_right = 690.0
-offset_bottom = 500.0
-titulo = "Puzzle"
-programa = ExtResource("11_prog_puzzle")
+offset_left = 270.0
+offset_top = 24.0
+offset_right = 850.0
+offset_bottom = 610.0
+titulo = "Panel de Mantenimiento"
+programa = ExtResource("11_mantenimiento")
 
 [node name="MenuInicio" type="Panel" parent="."]
 visible = false
@@ -238,12 +250,12 @@ icon = ExtResource("4_icono_camara")
 flat = true
 alignment = 0
 
-[node name="ItemPuzzle" type="Button" parent="MenuInicio/Lista"]
+[node name="ItemMantenimiento" type="Button" parent="MenuInicio/Lista"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_constants/icon_max_width = 32
-text = "Puzzle"
-icon = ExtResource("5_icono_puzzle")
+text = "Panel de Mantenimiento"
+icon = ExtResource("5_icono_mantenimiento")
 flat = true
 alignment = 0
 
@@ -343,10 +355,10 @@ boton = NodePath("../Iconos/IconoCamaras")
 ventana = NodePath("../Ventanas/VentanaCamaras")
 doble_click = true
 
-[node name="AbrirPuzzle" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana")]
+[node name="AbrirMantenimiento" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana")]
 script = ExtResource("12_abrir")
-boton = NodePath("../Iconos/IconoPuzzle")
-ventana = NodePath("../Ventanas/VentanaPuzzle")
+boton = NodePath("../Iconos/IconoMantenimiento")
+ventana = NodePath("../Ventanas/VentanaMantenimiento")
 doble_click = true
 
 [node name="MenuCamaras" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana", "menu")]
@@ -355,8 +367,8 @@ boton = NodePath("../MenuInicio/Lista/ItemCamaras")
 ventana = NodePath("../Ventanas/VentanaCamaras")
 menu = NodePath("../MenuInicio")
 
-[node name="MenuPuzzle" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana", "menu")]
+[node name="MenuMantenimiento" type="Node" parent="." node_paths=PackedStringArray("boton", "ventana", "menu")]
 script = ExtResource("12_abrir")
-boton = NodePath("../MenuInicio/Lista/ItemPuzzle")
-ventana = NodePath("../Ventanas/VentanaPuzzle")
+boton = NodePath("../MenuInicio/Lista/ItemMantenimiento")
+ventana = NodePath("../Ventanas/VentanaMantenimiento")
 menu = NodePath("../MenuInicio")

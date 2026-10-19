@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func atacar() -> void:
 	reproductor.play(&"ataque", 0.05)
+	Sonidos.jumpscare_prusbonnie()
 
 
 func _al_terminar_animacion(animacion: StringName) -> void:

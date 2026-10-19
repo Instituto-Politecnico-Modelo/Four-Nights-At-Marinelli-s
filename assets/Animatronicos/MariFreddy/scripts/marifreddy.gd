@@ -8,6 +8,7 @@ extends Node3D
 signal ataque_terminado
 
 @export var reproductor: AnimationPlayer
+@export var sonido_jumpscare: AudioStreamPlayer
 @export var tiempo_mezcla: float = 0.25
 @export var velocidad_caminata: float = 1.3
 
@@ -35,6 +36,7 @@ func caminar() -> void:
 func atacar() -> void:
 	atacando = true
 	reproductor.play("ataque", 0.05)
+	sonido_jumpscare.play()
 
 
 ## Camina hacia adelante (-Z local) mientras suena la animacion de caminata.
